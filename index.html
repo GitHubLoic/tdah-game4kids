@@ -744,31 +744,95 @@
   var CONSONANTS = ['b','d','p','f','m','l','s','t','v','r','n'];
   var VOYELLES = ['a','i','o','u'];
 
-  /* Alphabet de découverte : une image bien reconnaissable par lettre, commune aux 3 thèmes
-     (l'association lettre/image n'a pas de raison de changer selon l'univers choisi). */
-  var ALPHABET_BANK = [
-    {letter:'A', word:'avion', emoji:'✈️'},
-    {letter:'B', word:'ballon', emoji:'🎈'},
-    {letter:'C', word:'chat', emoji:'🐱'},
-    {letter:'D', word:'dauphin', emoji:'🐬'},
-    {letter:'E', word:'étoile', emoji:'⭐'},
-    {letter:'F', word:'fleur', emoji:'🌸'},
-    {letter:'G', word:'gâteau', emoji:'🎂'},
+  /* Alphabet de découverte : une image par lettre, thématisée par univers depuis le 06/09/2026
+     (à la demande du parent, pour que ce portail garde un vrai lien avec le thème choisi
+     comme les autres jeux, au lieu d'un contenu identique dans les 3 univers).
+     Les lettres K, Q, W, X, Y, Z gardent volontairement le même mot classique des abécédaires
+     français (kangourou, quille, wagon, xylophone, yoyo, zèbre) dans les 3 thèmes : il n'existe
+     pas de mot simple et connu d'un enfant de 7 ans pour ces lettres dans un univers magie/
+     espace/dinosaures, donc plutôt que de forcer un mot artificiel, ces 6 lettres restent neutres
+     partout — comme dans un abécédaire papier classique. */
+  var ALPHABET_BANK_MAGIC = [
+    {letter:'A', word:'anneau', emoji:'💍'},
+    {letter:'B', word:'baguette', emoji:'🪄'},
+    {letter:'C', word:'château', emoji:'🏰'},
+    {letter:'D', word:'dragon', emoji:'🐉'},
+    {letter:'E', word:'épée', emoji:'⚔️'},
+    {letter:'F', word:'fée', emoji:'🧚'},
+    {letter:'G', word:'grenouille', emoji:'🐸'},
     {letter:'H', word:'hibou', emoji:'🦉'},
+    {letter:'I', word:'île', emoji:'🏝️'},
+    {letter:'J', word:'jardin', emoji:'🌳'},
+    {letter:'K', word:'kangourou', emoji:'🦘'},
+    {letter:'L', word:'licorne', emoji:'🦄'},
+    {letter:'M', word:'miroir', emoji:'🪞'},
+    {letter:'N', word:'nuage', emoji:'☁️'},
+    {letter:'O', word:'ogre', emoji:'🧌'},
+    {letter:'P', word:'princesse', emoji:'👸'},
+    {letter:'Q', word:'quille', emoji:'🎳'},
+    {letter:'R', word:'roi', emoji:'🤴'},
+    {letter:'S', word:'sorcière', emoji:'🧙‍♀️'},
+    {letter:'T', word:'tour', emoji:'🗼'},
+    {letter:'U', word:'univers', emoji:'🌌'},
+    {letter:'V', word:'vase', emoji:'🏺'},
+    {letter:'W', word:'wagon', emoji:'🚃'},
+    {letter:'X', word:'xylophone', emoji:'🎶'},
+    {letter:'Y', word:'yoyo', emoji:'🪀'},
+    {letter:'Z', word:'zèbre', emoji:'🦓'}
+  ];
+
+  var ALPHABET_BANK_SPACE = [
+    {letter:'A', word:'astronaute', emoji:'👨‍🚀'},
+    {letter:'B', word:'bouclier', emoji:'🛡️'},
+    {letter:'C', word:'comète', emoji:'☄️'},
+    {letter:'D', word:'drapeau', emoji:'🚩'},
+    {letter:'E', word:'étoile', emoji:'⭐'},
+    {letter:'F', word:'fusée', emoji:'🚀'},
+    {letter:'G', word:'galaxie', emoji:'🌌'},
+    {letter:'H', word:'hublot', emoji:'🪟'},
     {letter:'I', word:'igloo', emoji:'🧊'},
-    {letter:'J', word:'jus', emoji:'🧃'},
+    {letter:'J', word:'Jupiter', emoji:'🪐'},
     {letter:'K', word:'kangourou', emoji:'🦘'},
     {letter:'L', word:'lune', emoji:'🌙'},
-    {letter:'M', word:'maison', emoji:'🏠'},
-    {letter:'N', word:'nuage', emoji:'☁️'},
-    {letter:'O', word:'oiseau', emoji:'🐦'},
-    {letter:'P', word:'poisson', emoji:'🐟'},
+    {letter:'M', word:'martien', emoji:'👽'},
+    {letter:'N', word:'navette', emoji:'🛸'},
+    {letter:'O', word:'outil', emoji:'🔧'},
+    {letter:'P', word:'planète', emoji:'🌍'},
     {letter:'Q', word:'quille', emoji:'🎳'},
     {letter:'R', word:'robot', emoji:'🤖'},
-    {letter:'S', word:'serpent', emoji:'🐍'},
-    {letter:'T', word:'tortue', emoji:'🐢'},
+    {letter:'S', word:'satellite', emoji:'🛰️'},
+    {letter:'T', word:'télescope', emoji:'🔭'},
+    {letter:'U', word:'univers', emoji:'🌠'},
+    {letter:'V', word:'vent', emoji:'💨'},
+    {letter:'W', word:'wagon', emoji:'🚃'},
+    {letter:'X', word:'xylophone', emoji:'🎶'},
+    {letter:'Y', word:'yoyo', emoji:'🪀'},
+    {letter:'Z', word:'zèbre', emoji:'🦓'}
+  ];
+
+  var ALPHABET_BANK_DINO = [
+    {letter:'A', word:'araignée', emoji:'🕷️'},
+    {letter:'B', word:'buisson', emoji:'🌳'},
+    {letter:'C', word:'caverne', emoji:'🕳️'},
+    {letter:'D', word:'dinosaure', emoji:'🦕'},
+    {letter:'E', word:'écureuil', emoji:'🐿️'},
+    {letter:'F', word:'fossile', emoji:'🦴'},
+    {letter:'G', word:'griffe', emoji:'🐾'},
+    {letter:'H', word:'herbe', emoji:'🌿'},
+    {letter:'I', word:'iguane', emoji:'🦎'},
+    {letter:'J', word:'jungle', emoji:'🌴'},
+    {letter:'K', word:'kangourou', emoji:'🦘'},
+    {letter:'L', word:'lac', emoji:'🏞️'},
+    {letter:'M', word:'montagne', emoji:'⛰️'},
+    {letter:'N', word:'nuit', emoji:'🌙'},
+    {letter:'O', word:'orage', emoji:'⛈️'},
+    {letter:'P', word:'ptérodactyle', emoji:'🦅'},
+    {letter:'Q', word:'quille', emoji:'🎳'},
+    {letter:'R', word:'rivière', emoji:'🌊'},
+    {letter:'S', word:'squelette', emoji:'💀'},
+    {letter:'T', word:'tyrannosaure', emoji:'🦖'},
     {letter:'U', word:'usine', emoji:'🏭'},
-    {letter:'V', word:'voiture', emoji:'🚗'},
+    {letter:'V', word:'volcan', emoji:'🌋'},
     {letter:'W', word:'wagon', emoji:'🚃'},
     {letter:'X', word:'xylophone', emoji:'🎶'},
     {letter:'Y', word:'yoyo', emoji:'🪀'},
@@ -1084,7 +1148,7 @@
       wandLabel:'🪄 Fusionner',
       celebrateTitle:'Bravo, petite magicienne des mots !',
       encourage:['Bravo ! ✨','Superbe ! 🌟','Magnifique ! 💫','Tu es une championne ! 👑','Parfait ! 🎉','Génial ! 🦄'],
-      wordBank:WORD_BANK_MAGIC, huntBank:HUNT_BANK_MAGIC, sentenceBank:SENTENCE_BANK_MAGIC, sceneBank:SCENE_BANK_MAGIC
+      wordBank:WORD_BANK_MAGIC, huntBank:HUNT_BANK_MAGIC, sentenceBank:SENTENCE_BANK_MAGIC, sceneBank:SCENE_BANK_MAGIC, alphabetBank:ALPHABET_BANK_MAGIC
     },
     space: {
       label:'Espace', selectorIcon:'🚀', mascot:'🚀',
@@ -1112,7 +1176,7 @@
       wandLabel:'🛸 Fusionner',
       celebrateTitle:'Bravo, petite exploratrice de l\'espace !',
       encourage:['Bravo ! ✨','Superbe ! 🌟','Mission réussie ! 🚀','Tu es une championne ! 🧑‍🚀','Parfait ! 🎉','Génial ! 👽'],
-      wordBank:WORD_BANK_SPACE, huntBank:HUNT_BANK_SPACE, sentenceBank:SENTENCE_BANK_SPACE, sceneBank:SCENE_BANK_SPACE
+      wordBank:WORD_BANK_SPACE, huntBank:HUNT_BANK_SPACE, sentenceBank:SENTENCE_BANK_SPACE, sceneBank:SCENE_BANK_SPACE, alphabetBank:ALPHABET_BANK_SPACE
     },
     dino: {
       label:'Dinosaures', selectorIcon:'🦖', mascot:'🦖',
@@ -1140,16 +1204,17 @@
       wandLabel:'🦴 Fusionner',
       celebrateTitle:'Bravo, petite exploratrice du Jurassique !',
       encourage:['Bravo ! ✨','Superbe ! 🌟','Découverte incroyable ! 🦴','Tu es une championne ! 🦕','Parfait ! 🎉','Génial ! 🦖'],
-      wordBank:WORD_BANK_DINO, huntBank:HUNT_BANK_DINO, sentenceBank:SENTENCE_BANK_DINO, sceneBank:SCENE_BANK_DINO
+      wordBank:WORD_BANK_DINO, huntBank:HUNT_BANK_DINO, sentenceBank:SENTENCE_BANK_DINO, sceneBank:SCENE_BANK_DINO, alphabetBank:ALPHABET_BANK_DINO
     }
   };
 
   /* ---------------- Round builders ---------------- */
   function buildAlphabetRound(){
-    var chosen = pickN(ALPHABET_BANK, 6);
+    var bank = THEMES[state.pack].alphabetBank;
+    var chosen = pickN(bank, 6);
     return chosen.map(function(item, i){
       var mode = (i % 2 === 0) ? 'toImage' : 'toLetter';
-      var others = ALPHABET_BANK.filter(function(x){ return x.letter !== item.letter; });
+      var others = bank.filter(function(x){ return x.letter !== item.letter; });
       var decoys = pickN(others, 2);
       if (mode === 'toImage'){
         var opts = shuffle([item].concat(decoys)).map(function(w){
