@@ -1,0 +1,1657 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>Les Cristaux de Licorne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FDF7EF;
+    --paper-2:#F7EFE1;
+    --ink:#382C52;
+    --ink-soft:#6C5C8C;
+    --surface:#FFFFFF;
+    --surface-alt:#F3EAFB;
+    --accent:#7C5CBF;
+    --accent-deep:#5B3F94;
+    --accent-tint:#EFE6FB;
+    --gold:#D6922A;
+    --gold-deep:#A9700F;
+    --gold-tint:#FBEBCE;
+    --rose:#D2568A;
+    --rose-tint:#FBE4EE;
+    --sky:#3E7CB1;
+    --sky-tint:#DCEEFA;
+    --amber:#C97A2B;
+    --amber-tint:#FBE6CC;
+    --success:#2F8F55;
+    --success-bg:#E4F5EA;
+    --retry:#D9642F;
+    --retry-bg:#FDEAE0;
+    --border:#E4D9F5;
+    --shadow: 0 10px 30px -12px rgba(56,44,82,0.28);
+    --font-display:'Baloo 2', ui-rounded, 'Segoe UI', sans-serif;
+    --font-body:'Lexend', ui-sans-serif, system-ui, sans-serif;
+    --phon-nasal:#127A6E;
+    --phon-nasal-tint:#DCF3EF;
+    --phon-vowel:#4753C9;
+    --phon-vowel-tint:#E6E8FC;
+    --phon-cons:#B15C1E;
+    --phon-cons-tint:#FBE7D6;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#201C36;
+      --paper-2:#241F3D;
+      --ink:#F3EEFA;
+      --ink-soft:#C9BEE0;
+      --surface:#2C2650;
+      --surface-alt:#362E5E;
+      --accent:#B49AE8;
+      --accent-deep:#D8C7F5;
+      --accent-tint:#3B3164;
+      --gold:#F0C168;
+      --gold-deep:#F5D48A;
+      --gold-tint:#4A3B21;
+      --rose:#F0A0C0;
+      --rose-tint:#4A2D3C;
+      --sky:#8CC6F0;
+      --sky-tint:#1F3A52;
+      --amber:#F0B36B;
+      --amber-tint:#4A331E;
+      --success:#7FD79B;
+      --success-bg:#25402E;
+      --retry:#F09468;
+      --retry-bg:#4A2E22;
+      --border:#473C6E;
+      --shadow: 0 10px 30px -10px rgba(0,0,0,0.55);
+      --phon-nasal:#7FE3D3;
+      --phon-nasal-tint:#153E38;
+      --phon-vowel:#B7BEFF;
+      --phon-vowel-tint:#2B2F63;
+      --phon-cons:#F3A868;
+      --phon-cons-tint:#4A2E14;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#201C36;
+    --paper-2:#241F3D;
+    --ink:#F3EEFA;
+    --ink-soft:#C9BEE0;
+    --surface:#2C2650;
+    --surface-alt:#362E5E;
+    --accent:#B49AE8;
+    --accent-deep:#D8C7F5;
+    --accent-tint:#3B3164;
+    --gold:#F0C168;
+    --gold-deep:#F5D48A;
+    --gold-tint:#4A3B21;
+    --rose:#F0A0C0;
+    --rose-tint:#4A2D3C;
+    --sky:#8CC6F0;
+    --sky-tint:#1F3A52;
+    --amber:#F0B36B;
+    --amber-tint:#4A331E;
+    --success:#7FD79B;
+    --success-bg:#25402E;
+    --retry:#F09468;
+    --retry-bg:#4A2E22;
+    --border:#473C6E;
+    --shadow: 0 10px 30px -10px rgba(0,0,0,0.55);
+    --phon-nasal:#7FE3D3;
+    --phon-nasal-tint:#153E38;
+    --phon-vowel:#B7BEFF;
+    --phon-vowel-tint:#2B2F63;
+    --phon-cons:#F3A868;
+    --phon-cons-tint:#4A2E14;
+  }
+
+  /* ---- Theme packs: override only the accent hues, keep neutrals/semantics shared ---- */
+  :root[data-pack="space"]{
+    --accent:#3B5FCB; --accent-deep:#28418F; --accent-tint:#E3E9FC;
+    --rose:#C2469E; --rose-tint:#F6E1F0;
+    --gold:#D1A02E; --gold-deep:#9C7714; --gold-tint:#FBF2D2;
+    --sky:#2E8FC0; --sky-tint:#D8F0FB;
+    --amber:#CC5B2B; --amber-tint:#FCE3D5;
+  }
+  @media (prefers-color-scheme: dark){
+    :root[data-pack="space"]:not([data-theme="light"]){
+      --accent:#8FA6F0; --accent-deep:#C3D0FA; --accent-tint:#26355E;
+      --rose:#E88FCE; --rose-tint:#4A2A44;
+      --gold:#F0D27A; --gold-deep:#F5E0A0; --gold-tint:#4A3D1C;
+      --sky:#7FCDF0; --sky-tint:#1C3C4A;
+      --amber:#F0A377; --amber-tint:#4A2D1E;
+    }
+  }
+  :root[data-pack="space"][data-theme="dark"]{
+    --accent:#8FA6F0; --accent-deep:#C3D0FA; --accent-tint:#26355E;
+    --rose:#E88FCE; --rose-tint:#4A2A44;
+    --gold:#F0D27A; --gold-deep:#F5E0A0; --gold-tint:#4A3D1C;
+    --sky:#7FCDF0; --sky-tint:#1C3C4A;
+    --amber:#F0A377; --amber-tint:#4A2D1E;
+  }
+
+  :root[data-pack="dino"]{
+    --accent:#3F8F5C; --accent-deep:#2A6B41; --accent-tint:#DFF3E5;
+    --rose:#C25A3E; --rose-tint:#FBE5DD;
+    --gold:#B98426; --gold-deep:#8C6210; --gold-tint:#F7E7C4;
+    --sky:#2E8F82; --sky-tint:#D9F2EE;
+    --amber:#C4551F; --amber-tint:#FBDFC9;
+  }
+  @media (prefers-color-scheme: dark){
+    :root[data-pack="dino"]:not([data-theme="light"]){
+      --accent:#8FE0AE; --accent-deep:#C8F5D8; --accent-tint:#234A34;
+      --rose:#F0A186; --rose-tint:#4A2E22;
+      --gold:#F0C96B; --gold-deep:#F5DDA0; --gold-tint:#4A3B1C;
+      --sky:#7FE0D2; --sky-tint:#1C4A44;
+      --amber:#F0A26B; --amber-tint:#4A2C1A;
+    }
+  }
+  :root[data-pack="dino"][data-theme="dark"]{
+    --accent:#8FE0AE; --accent-deep:#C8F5D8; --accent-tint:#234A34;
+    --rose:#F0A186; --rose-tint:#4A2E22;
+    --gold:#F0C96B; --gold-deep:#F5DDA0; --gold-tint:#4A3B1C;
+    --sky:#7FE0D2; --sky-tint:#1C4A44;
+    --amber:#F0A26B; --amber-tint:#4A2C1A;
+  }
+
+  *{box-sizing:border-box;}
+  /* ---------- Anti-glissade tablette ----------
+     Sur tablette (surtout Safari iPad), un doigt d'enfant qui tapote vite peut déclencher :
+     le rebond élastique du navigateur, un léger glisser interprété comme un balayage de
+     page (retour arrière / rechargement), ou une sélection de texte qui "traîne" l'écran.
+     Ces règles neutralisent tout ça sans bloquer le défilement vertical normal. */
+  html{
+    -webkit-text-size-adjust:100%;
+    overscroll-behavior:none;
+    touch-action:pan-y;
+    height:100%;
+  }
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 8% 12%, color-mix(in srgb, var(--gold) 14%, transparent) 0, transparent 40%),
+      radial-gradient(circle at 92% 85%, color-mix(in srgb, var(--rose) 14%, transparent) 0, transparent 42%),
+      var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.5;
+    overflow-x:hidden;
+    overscroll-behavior:none;
+    touch-action:pan-y;
+    min-height:100%;
+  }
+  h1,h2,h3,.display{font-family:var(--font-display); text-wrap:balance;}
+  button{
+    font-family:inherit;
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    user-select:none;
+  }
+  :focus-visible{outline:3px solid var(--accent); outline-offset:3px; border-radius:8px;}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+  .app{
+    max-width:56rem; margin:0 auto; padding:0.9rem 1rem 3rem; min-height:100vh; display:flex; flex-direction:column;
+    -webkit-user-select:none; user-select:none; -webkit-touch-callout:none;
+  }
+
+  /* ---------- Topbar ---------- */
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between; gap:0.75rem;
+    background:var(--surface); border:2px solid var(--border); border-radius:20px;
+    padding:0.6rem 0.9rem; box-shadow:var(--shadow); margin-bottom:1.1rem;
+    position:sticky; top:0.6rem; z-index:20;
+  }
+  .topbar-identity{display:flex; align-items:center; gap:0.65rem; min-width:0;}
+  .mascot-badge{
+    width:2.75rem; height:2.75rem; border-radius:50%; background:var(--accent-tint);
+    display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex:none;
+    border:2px solid var(--accent);
+  }
+  .identity-text{min-width:0;}
+  .identity-title{
+    font-family:var(--font-display); font-weight:700; font-size:1rem; color:var(--accent-deep); line-height:1.15;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .identity-sub{font-size:0.85rem; color:var(--ink-soft); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .crystal-counter{
+    display:flex; align-items:center; gap:0.4rem; background:var(--gold-tint); border:2px solid var(--gold);
+    border-radius:999px; padding:0.45rem 0.95rem; font-family:var(--font-display); font-weight:700;
+    color:var(--gold-deep); font-size:1.2rem; flex:none;
+  }
+  .quit-btn{
+    display:none; align-items:center; gap:0.3rem; background:var(--surface-alt); border:2px solid var(--border);
+    color:var(--ink); font-weight:600; border-radius:999px; padding:0.6rem 1.05rem; cursor:pointer; font-size:1.05rem;
+  }
+  .quit-btn:hover{background:var(--rose-tint); border-color:var(--rose);}
+  .fullscreen-btn{
+    display:none; align-items:center; justify-content:center; background:var(--surface-alt); border:2px solid var(--border);
+    color:var(--ink); border-radius:999px; width:2.75rem; height:2.75rem; cursor:pointer; font-size:1.35rem; flex:none;
+  }
+  .fullscreen-btn:hover{background:var(--accent-tint); border-color:var(--accent);}
+  .fullscreen-btn.active{background:var(--accent-tint); border-color:var(--accent); color:var(--accent-deep);}
+
+  /* ---------- Screens ---------- */
+  .screen{display:none; flex:1; flex-direction:column;}
+  .screen.active{display:flex;}
+
+  /* ---------- Home ---------- */
+  .hero{
+    text-align:center; padding:0.4rem 0.5rem 1.4rem;
+  }
+  .hero-title{
+    font-size:clamp(1.9rem, 1.5rem + 2.2vw, 2.9rem); font-weight:800; color:var(--accent-deep); margin:0 0 0.35rem;
+  }
+  .hero-sub{font-size:clamp(1.1rem, 1rem + 0.4vw, 1.3rem); color:var(--ink-soft); margin:0; max-width:34rem; margin-inline:auto;}
+  .level-pill{
+    display:inline-flex; align-items:center; gap:0.4rem; margin-top:0.8rem; background:var(--surface);
+    border:2px solid var(--border); border-radius:999px; padding:0.5rem 1.1rem; font-weight:600; font-size:1.05rem; color:var(--ink);
+  }
+
+  .theme-switcher{
+    display:flex; flex-direction:column; align-items:center; gap:0.5rem; margin:1.3rem 0 0.3rem;
+  }
+  .theme-switcher-label{font-size:0.82rem; font-weight:600; color:var(--ink-soft); letter-spacing:0.02em;}
+  .theme-switcher-row{display:flex; gap:0.6rem; flex-wrap:wrap; justify-content:center;}
+  .theme-btn{
+    font-family:var(--font-display); font-weight:600; font-size:0.92rem; color:var(--ink);
+    background:var(--surface); border:2px solid var(--border); border-radius:999px; padding:0.5rem 1.05rem;
+    cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem;
+  }
+  .theme-btn.active{background:var(--accent-tint); border-color:var(--accent); color:var(--accent-deep);}
+
+  .home-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(15.5rem, 1fr)); gap:1.1rem; margin-top:0.4rem;
+  }
+  .portal-card{
+    background:var(--surface); border:2px solid var(--border); border-radius:26px; padding:1.3rem 1.2rem;
+    text-align:left; cursor:pointer; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:0.7rem;
+    min-height:11.5rem; position:relative; overflow:hidden; transition:transform 0.15s ease;
+  }
+  .portal-card:hover, .portal-card:focus-visible{transform:translateY(-3px);}
+  .portal-card::after{
+    content:""; position:absolute; inset:auto -2.5rem -2.5rem auto; width:7rem; height:7rem; border-radius:50%;
+    background:var(--card-tint, var(--accent-tint)); opacity:0.7; z-index:0;
+  }
+  .portal-icon{
+    width:3.6rem; height:3.6rem; border-radius:18px; display:flex; align-items:center; justify-content:center;
+    font-size:1.9rem; background:var(--card-tint, var(--accent-tint)); border:2px solid var(--card-accent, var(--accent));
+    position:relative; z-index:1;
+  }
+  .portal-name{font-family:var(--font-display); font-weight:700; font-size:1.4rem; color:var(--ink); position:relative; z-index:1;}
+  .portal-desc{font-size:1.05rem; color:var(--ink-soft); position:relative; z-index:1; flex:1;}
+  .portal-cta{
+    align-self:flex-start; font-family:var(--font-display); font-weight:700; font-size:1.05rem; color:var(--card-accent, var(--accent-deep));
+    display:flex; align-items:center; gap:0.3rem; position:relative; z-index:1;
+  }
+
+  .parent-note{
+    margin-top:1.8rem; background:var(--surface); border:2px dashed var(--border); border-radius:20px; padding:0.9rem 1.1rem;
+  }
+  .parent-note summary{font-family:var(--font-display); font-weight:700; cursor:pointer; font-size:1.1rem; color:var(--accent-deep);}
+  .parent-note p{font-size:1.02rem; color:var(--ink-soft); margin:0.7rem 0 0;}
+  .parent-note p + p{margin-top:0.5rem;}
+
+  /* ---------- Game screen ---------- */
+  .game-head{display:flex; align-items:center; justify-content:space-between; gap:0.8rem; margin-bottom:0.9rem; flex-wrap:wrap;}
+  .game-title{font-size:clamp(1.3rem,1.15rem + 0.7vw,1.7rem); font-weight:700; color:var(--accent-deep); margin:0;}
+  .progress-dots{display:flex; gap:0.4rem; flex-wrap:wrap;}
+  .dot{width:1rem; height:1rem; border-radius:50%; background:var(--border); flex:none;}
+  .dot.done{background:var(--success);}
+  .dot.current{background:var(--gold); outline:2px solid var(--gold-deep); outline-offset:1px;}
+
+  .game-card{
+    background:var(--surface); border:2px solid var(--border); border-radius:28px; padding:clamp(1.2rem,1rem + 2vw,2.4rem);
+    box-shadow:var(--shadow); flex:1; display:flex; flex-direction:column; gap:1.4rem; align-items:center; text-align:center;
+  }
+  .prompt-text{font-size:clamp(1.15rem,1.05rem + 0.5vw,1.4rem); color:var(--ink-soft); font-weight:500; margin:0;}
+
+  .stage-display{
+    display:flex; align-items:center; justify-content:center; gap:0.8rem; flex-wrap:wrap; min-height:6rem;
+  }
+  .letter-target{
+    font-family:var(--font-body); font-weight:700; font-size:clamp(5rem,3.6rem + 8vw,9rem); color:var(--accent-deep);
+    background:var(--accent-tint); border:3px solid var(--accent); border-radius:28px; width:1.5em; height:1.3em;
+    display:flex; align-items:center; justify-content:center; line-height:1;
+  }
+  .image-target{
+    font-size:clamp(4rem,3rem + 6vw,7rem); background:var(--accent-tint); border:3px solid var(--accent);
+    border-radius:28px; width:1.6em; height:1.4em; display:flex; align-items:center; justify-content:center; line-height:1;
+  }
+  .speak-target{
+    display:flex; flex-direction:column; align-items:center; gap:0.6rem;
+  }
+  .speak-target .icon-orb{
+    width:6rem; height:6rem; border-radius:50%; background:var(--rose-tint); border:3px solid var(--rose);
+    display:flex; align-items:center; justify-content:center; font-size:2.6rem;
+  }
+
+  .tile-row{display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;}
+  .letter-tile{
+    font-family:var(--font-body); font-weight:700; font-size:clamp(2.6rem,2rem + 3vw,4rem); color:var(--ink);
+    background:var(--surface-alt); border:3px solid var(--border); border-radius:20px; width:2.1em; height:2.1em;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .letter-tile.tapped{border-color:var(--success); background:var(--success-bg);}
+  .wand-btn{
+    font-family:var(--font-display); font-weight:700; font-size:1.15rem; color:var(--surface);
+    background:var(--gold-deep); border:none; border-radius:999px; padding:0.85rem 1.6rem; cursor:pointer;
+    display:flex; align-items:center; gap:0.5rem; box-shadow:var(--shadow);
+  }
+  .wand-btn:disabled{opacity:0.45; cursor:not-allowed;}
+  .hint-line{font-size:1.02rem; color:var(--ink-soft); min-height:1.3em;}
+
+  .syllable-row{display:flex; gap:0.6rem; justify-content:center; flex-wrap:wrap;}
+  .syllable-chip{
+    font-family:var(--font-body); font-weight:600; font-size:clamp(1.6rem,1.3rem + 1.6vw,2.6rem);
+    border-radius:16px; padding:0.35em 0.55em; cursor:pointer; border:3px solid transparent; color:var(--surface);
+  }
+  .syllable-chip:nth-child(odd){background:var(--accent);}
+  .syllable-chip:nth-child(even){background:var(--rose);}
+  .syllable-chip.tapped{border-color:var(--gold-deep); box-shadow:0 0 0 3px var(--gold-tint) inset;}
+
+  .word-chip{
+    font-family:var(--font-body); font-weight:600; font-size:clamp(1.25rem,1.05rem + 1vw,1.9rem);
+    border-radius:14px; padding:0.35em 0.6em; cursor:pointer; border:3px solid transparent; color:var(--surface);
+  }
+  .word-chip:nth-child(odd){background:var(--sky);}
+  .word-chip:nth-child(even){background:var(--rose);}
+  .word-chip.tapped{border-color:var(--gold-deep); box-shadow:0 0 0 3px var(--gold-tint) inset;}
+
+  .word-display{
+    font-family:var(--font-body); font-weight:700; font-size:clamp(2.6rem,2rem + 3.4vw,4.4rem); color:var(--ink);
+    letter-spacing:0.01em; text-transform:uppercase;
+  }
+
+  /* ---------- Code couleur des sons complexes ---------- */
+  .gr-nasal, .gr-vowel, .gr-cons{
+    border-radius:0.28em; padding:0 0.1em; font-weight:800; box-decoration-break:clone; -webkit-box-decoration-break:clone;
+  }
+  .gr-nasal{ color:var(--phon-nasal); background:var(--phon-nasal-tint); border-bottom:0.14em solid var(--phon-nasal); }
+  .gr-vowel{ color:var(--phon-vowel); background:var(--phon-vowel-tint); border-bottom:0.14em dashed var(--phon-vowel); }
+  .gr-cons{ color:var(--phon-cons); background:var(--phon-cons-tint); border-bottom:0.14em dotted var(--phon-cons); }
+  .sound-legend{
+    display:flex; flex-wrap:wrap; gap:0.6rem 1.1rem; margin-top:0.6rem; font-size:0.98rem; color:var(--ink-soft);
+  }
+  .sound-legend span.swatch{
+    display:inline-flex; align-items:center; gap:0.4rem;
+  }
+  .sound-legend .chip-demo{
+    font-family:var(--font-body); font-weight:800; border-radius:0.28em; padding:0.05em 0.35em;
+  }
+
+  .paragraph-block{display:flex; flex-direction:column; gap:0.6rem; width:100%; max-width:36rem; margin:0 auto;}
+  .sentence-line{
+    font-family:var(--font-body); font-weight:500; font-size:clamp(1.1rem,1rem + 0.5vw,1.4rem); line-height:1.5;
+    color:var(--ink); background:var(--surface-alt); border:2px solid var(--border); border-radius:14px;
+    padding:0.65rem 1rem; cursor:pointer; text-align:left; width:100%;
+  }
+  .sentence-line.tapped{border-color:var(--sky); background:var(--sky-tint);}
+
+  .listen-btn{
+    font-family:var(--font-display); font-weight:600; font-size:1.1rem; color:var(--accent-deep);
+    background:var(--accent-tint); border:2px solid var(--accent); border-radius:999px; padding:0.65rem 1.25rem; cursor:pointer;
+    display:inline-flex; align-items:center; gap:0.4rem;
+  }
+
+  .options-grid{
+    display:grid; gap:0.9rem; width:100%; margin-top:0.2rem;
+  }
+  .options-grid.opt-3{grid-template-columns:repeat(auto-fit, minmax(9rem,1fr));}
+  .options-grid.opt-4{grid-template-columns:repeat(auto-fit, minmax(6.5rem,1fr));}
+  .opt-btn{
+    background:var(--surface-alt); border:3px solid var(--border); border-radius:20px; cursor:pointer;
+    min-height:6rem; display:flex; align-items:center; justify-content:center; gap:0.5rem;
+    font-family:var(--font-body); color:var(--ink); padding:0.7rem;
+    transition:transform 0.1s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+  .opt-btn:active{transform:scale(0.97);}
+  .opt-btn.letter-opt{font-weight:700; font-size:clamp(2.4rem,2rem + 2.2vw,3.6rem);}
+  .opt-btn.syllable-opt{font-weight:700; font-size:clamp(2.2rem,1.8rem + 2.2vw,3.4rem);} /* nom de classe corrigé le 04/09/2026 : était .syll-opt, ne correspondait jamais à la classe générée par le JS ('syllable-opt') */
+  .opt-btn.emoji-opt{font-size:clamp(2.6rem,2.1rem + 3vw,4.2rem); flex-direction:column; min-height:7rem; position:relative;}
+  .opt-btn .opt-audio-btn{
+    position:absolute; top:0.4rem; right:0.4rem; width:2.5rem; height:2.5rem; border-radius:50%;
+    background:var(--surface); border:2px solid var(--accent); color:var(--accent);
+    font-size:1.15rem; line-height:1; display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+  }
+  .opt-btn .opt-audio-btn:active{transform:scale(0.92);}
+  .opt-btn .opt-audio-btn:focus-visible{outline:3px solid var(--accent); outline-offset:2px;}
+  .opt-btn.word-opt{font-weight:700; font-size:clamp(1.9rem,1.5rem + 1.8vw,2.6rem);}
+  .opt-btn.scenepic-opt{
+    flex-direction:column; gap:0.55rem; min-height:9.5rem; padding:1rem 0.7rem;
+    border-style:dashed; border-color:var(--amber); background:var(--amber-tint);
+  }
+  .scene-vignette{
+    display:flex; align-items:center; gap:0.35rem; justify-content:center;
+    font-size:clamp(1.5rem,1.25rem + 1.8vw,2.4rem); line-height:1;
+  }
+  .opt-btn .opt-label{font-size:0.98rem; font-weight:600; color:var(--ink-soft);}
+  .opt-btn.correct-flash{background:var(--success-bg); border-color:var(--success);}
+  .opt-btn.wrong-flash{background:var(--retry-bg); border-color:var(--retry);}
+  .opt-btn.reveal-correct{background:var(--success-bg); border-color:var(--success); box-shadow:0 0 0 3px var(--success-bg);}
+  .opt-btn:disabled{cursor:default;}
+
+  .feedback-banner{
+    min-height:2.6rem; font-family:var(--font-display); font-weight:700; font-size:clamp(1.1rem,1rem + 0.4vw,1.35rem);
+    display:flex; align-items:center; justify-content:center; gap:0.5rem; border-radius:16px; padding:0.4rem 1rem;
+    color:var(--ink-soft);
+  }
+  .feedback-banner.ok{background:var(--success-bg); color:var(--success);}
+  .feedback-banner.retry{background:var(--retry-bg); color:var(--retry);}
+
+  /* ---------- Celebration ---------- */
+  .celebrate{align-items:center; justify-content:center; text-align:center; gap:1.1rem;}
+  .celebrate .big-emoji{font-size:clamp(4rem,3rem + 5vw,6.5rem);}
+  .celebrate h2{font-size:clamp(1.6rem,1.3rem + 1.6vw,2.3rem); color:var(--accent-deep); margin:0;}
+  .celebrate p{color:var(--ink-soft); font-size:1.15rem; max-width:26rem; margin:0;}
+  .gem-gain{
+    font-family:var(--font-display); font-weight:700; font-size:1.3rem; color:var(--gold-deep);
+    background:var(--gold-tint); border:2px solid var(--gold); border-radius:999px; padding:0.5rem 1.2rem;
+  }
+  .celebrate-actions{display:flex; gap:0.8rem; flex-wrap:wrap; justify-content:center; margin-top:0.3rem;}
+  .btn-main{
+    font-family:var(--font-display); font-weight:700; font-size:1.2rem; border-radius:999px; padding:0.95rem 1.75rem;
+    cursor:pointer; border:none; box-shadow:var(--shadow); min-height:3.4rem;
+  }
+  .btn-main.primary{background:var(--accent); color:#fff;}
+  .btn-main.ghost{background:var(--surface); color:var(--ink); border:2px solid var(--border);}
+
+  @media (prefers-reduced-motion: no-preference){
+    .confetti-piece{animation:fall 1.6s ease-in forwards;}
+    @keyframes fall{
+      0%{transform:translateY(-10px) rotate(0deg); opacity:1;}
+      100%{transform:translateY(140px) rotate(200deg); opacity:0;}
+    }
+    .pop-in{animation:popin 0.35s ease-out;}
+    @keyframes popin{0%{transform:scale(0.85); opacity:0;} 100%{transform:scale(1); opacity:1;}}
+  }
+  .confetti-wrap{position:relative; height:0;}
+  .confetti-piece{position:absolute; font-size:1.4rem; top:0;}
+
+  footer.credits{text-align:center; color:var(--ink-soft); font-size:0.88rem; margin-top:2rem;}
+
+  @media (max-width:420px){
+    .identity-sub{display:none;}
+    .identity-title{font-size:1rem;}
+    .mascot-badge{width:2.3rem; height:2.3rem; font-size:1.25rem;}
+    .topbar{padding:0.5rem 0.65rem; gap:0.4rem;}
+    .crystal-counter{padding:0.4rem 0.7rem; font-size:1.1rem;}
+    .quit-btn{padding:0.5rem 0.75rem; font-size:1rem;}
+    .fullscreen-btn{width:2.4rem; height:2.4rem; font-size:1.15rem;}
+  }
+</style>
+
+<div class="app">
+  <div class="topbar">
+    <div class="topbar-identity">
+      <div class="mascot-badge" id="mascot-badge" aria-hidden="true">🦄</div>
+      <div class="identity-text">
+        <div class="identity-title" id="app-name">Les Cristaux de Licorne</div>
+        <div class="identity-sub" id="topbar-sub">Aventure de lecture magique</div>
+      </div>
+    </div>
+    <button class="fullscreen-btn" id="fullscreen-btn" type="button" title="Plein écran" aria-label="Plein écran">⛶</button>
+    <button class="quit-btn" id="quit-btn" type="button">↩️ Quitter</button>
+    <div class="crystal-counter"><span id="currency-icon" aria-hidden="true">💎</span><span id="crystal-count">0</span></div>
+  </div>
+
+  <!-- HOME SCREEN -->
+  <section class="screen active" id="screen-home">
+    <div class="hero">
+      <h1 class="hero-title" id="hero-title">Bienvenue au Royaume des Lettres ✨</h1>
+      <p class="hero-sub" id="hero-sub">Choisis un portail magique pour t'entraîner à lire. Chaque bonne réponse te rapporte des cristaux !</p>
+      <div class="level-pill" id="level-pill">🧚 Apprentie Fée</div>
+    </div>
+
+    <div class="theme-switcher">
+      <div class="theme-switcher-label">Choisis ton univers</div>
+      <div class="theme-switcher-row" id="theme-switcher-row"></div>
+    </div>
+
+    <div class="home-grid" id="home-grid"></div>
+
+    <details class="parent-note">
+      <summary>💌 Un mot pour les parents</summary>
+      <p>Ce jeu est pensé pour du <strong>déchiffrage actif</strong> : chaque exercice demande d'écouter ou de lire avant de répondre, plutôt que de deviner un mot à sa forme. Les portails de reconnaissance des lettres et de lecture de mots entiers ciblent spécifiquement les confusions b/d/p/q et la lecture-devinette — quel que soit l'univers choisi ci-dessus.</p>
+      <p>Des sessions courtes et régulières (5 à 10 minutes) fonctionnent souvent mieux qu'une longue séance, surtout en cas de difficultés d'attention. Célébrez l'effort autant que la réussite — le jeu ne compte jamais les erreurs contre elle. Si les confusions de lettres ou les difficultés persistent malgré la pratique, un bilan chez un∙e orthophoniste peut être une bonne piste.</p>
+      <p><strong>Code couleur des sons :</strong> dans les mots et les phrases, certaines lettres qui se prononcent ensemble comme un seul son sont surlignées pour éviter qu'elle les épelle une par une.</p>
+      <div class="sound-legend">
+        <span class="swatch"><span class="chip-demo gr-nasal">on</span> son nasal (on, an, in, un…)</span>
+        <span class="swatch"><span class="chip-demo gr-vowel">ou</span> voyelles groupées (ou, oi, au, eau…)</span>
+        <span class="swatch"><span class="chip-demo gr-cons">ch</span> consonnes groupées (ch, gn, ph, qu)</span>
+      </div>
+    </details>
+
+    <footer class="credits">Fait avec ✨ pour une petite lectrice courageuse.</footer>
+  </section>
+
+  <!-- GAME SCREEN -->
+  <section class="screen" id="screen-game">
+    <div class="game-head">
+      <h2 class="game-title" id="game-title">Jeu</h2>
+      <div class="progress-dots" id="progress-dots"></div>
+    </div>
+    <div class="game-card" id="game-card">
+      <p class="prompt-text" id="prompt-text">Consigne</p>
+      <div class="stage-display" id="stage-display"></div>
+      <button class="listen-btn" id="hint-btn" type="button" style="display:none;">💡 Indice</button>
+      <div class="hint-line" id="hint-line"></div>
+      <div class="options-grid opt-3" id="options-grid"></div>
+      <div class="feedback-banner" id="feedback-banner" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ROUND END SCREEN -->
+  <section class="screen celebrate" id="screen-celebrate">
+    <div class="confetti-wrap" id="confetti-wrap"></div>
+    <div class="big-emoji pop-in" id="celebrate-emoji">🎉</div>
+    <h2 id="celebrate-title">Bravo, petite magicienne des mots !</h2>
+    <p id="celebrate-detail">Tu as terminé ce round avec brio.</p>
+    <div class="gem-gain" id="celebrate-gems">+0 💎</div>
+    <div class="celebrate-actions">
+      <button class="btn-main primary" id="btn-replay" type="button">🔁 Rejouer ce portail</button>
+      <button class="btn-main ghost" id="btn-home" type="button">🗺️ Retour à la carte</button>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------------- Persistence ---------------- */
+  var STORAGE_KEY = 'lm_crystals_v1';
+  var PACK_KEY = 'lm_pack_v1';
+  var state = { crystals: 0, game: null, round: [], qIndex: 0, attempts: 0, roundGems: 0, pack: 'magic' };
+  var currentHint = '';
+
+  function loadCrystals(){
+    try{
+      var raw = window.localStorage.getItem(STORAGE_KEY);
+      var n = raw ? parseInt(raw, 10) : 0;
+      state.crystals = isNaN(n) ? 0 : n;
+    }catch(e){ state.crystals = 0; }
+  }
+  function saveCrystals(){
+    try{ window.localStorage.setItem(STORAGE_KEY, String(state.crystals)); }catch(e){}
+  }
+  function loadPack(){
+    try{
+      var raw = window.localStorage.getItem(PACK_KEY);
+      state.pack = (raw && THEMES[raw]) ? raw : 'magic';
+    }catch(e){ state.pack = 'magic'; }
+  }
+  function savePack(){
+    try{ window.localStorage.setItem(PACK_KEY, state.pack); }catch(e){}
+  }
+
+  /* ---------------- Speech ---------------- */
+  var frVoice = null;
+  function pickVoice(){
+    try{
+      var voices = window.speechSynthesis.getVoices();
+      frVoice = voices.find(function(v){ return v.lang && v.lang.toLowerCase().indexOf('fr') === 0; }) || null;
+    }catch(e){}
+  }
+  if (typeof window.speechSynthesis !== 'undefined'){
+    pickVoice();
+    window.speechSynthesis.onvoiceschanged = pickVoice;
+  }
+  function speak(text, rate){
+    try{
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = 'fr-FR';
+      u.rate = rate || 0.88;
+      if (frVoice) u.voice = frVoice;
+      window.speechSynthesis.speak(u);
+    }catch(e){}
+  }
+
+  /* ---------------- Helpers ---------------- */
+  function $(id){ return document.getElementById(id); }
+  function shuffle(arr){
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  function pickN(arr, n, excludeSet){
+    var pool = arr.filter(function(x){ return !excludeSet || !excludeSet.has(x); });
+    return shuffle(pool).slice(0, n);
+  }
+
+  /* ---------------- Code couleur des sons complexes ----------------
+     Repère les graphies qui font UN seul son (ex. "on", "ou", "ch") pour éviter
+     que l'enfant les épelle lettre à lettre. Les groupes nasaux (an/on/in/un...)
+     ne sont surlignés que s'ils sont vraiment nasaux : pas de surlignage si la
+     lettre suivante est une voyelle ("amie") ou double la consonne ("pomme"),
+     cas où le son redevient oral. */
+  var GRAPHEME_PATTERNS = (function(){
+    var groups = [
+      {type:'nasal', pats:['ain','ein','oin','an','am','en','em','in','im','on','om','un','um']},
+      {type:'vowel', pats:['eau','oeu','ai','ei','au','eu','ou','oi']},
+      {type:'cons',  pats:['ch','ph','gn','qu']}
+    ];
+    var all = [];
+    groups.forEach(function(g){ g.pats.forEach(function(p){ all.push({p:p, type:g.type}); }); });
+    all.sort(function(a,b){ return b.p.length - a.p.length; });
+    return all;
+  })();
+  var GRAPHEME_VOWELS = 'aeiouyàâäéèêëîïôöùûüœ';
+  function escapeHtml(s){
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  function highlightGraphemes(text){
+    var lower = text.toLowerCase();
+    var out = '';
+    var i = 0;
+    while (i < text.length){
+      var matched = null;
+      for (var k = 0; k < GRAPHEME_PATTERNS.length; k++){
+        var pat = GRAPHEME_PATTERNS[k].p;
+        if (lower.substr(i, pat.length) === pat){ matched = GRAPHEME_PATTERNS[k]; break; }
+      }
+      if (matched){
+        var excluded = false;
+        if (matched.type === 'nasal'){
+          var nextCh = lower.charAt(i + matched.p.length);
+          var lastLetter = matched.p.charAt(matched.p.length - 1);
+          if (nextCh && (GRAPHEME_VOWELS.indexOf(nextCh) !== -1 || nextCh === lastLetter)){ excluded = true; }
+        }
+        if (excluded){
+          out += escapeHtml(text.charAt(i));
+          i += 1;
+        } else {
+          var seg = text.substr(i, matched.p.length);
+          var cls = matched.type === 'nasal' ? 'gr-nasal' : (matched.type === 'vowel' ? 'gr-vowel' : 'gr-cons');
+          out += '<span class="' + cls + '">' + escapeHtml(seg) + '</span>';
+          i += matched.p.length;
+        }
+      } else {
+        out += escapeHtml(text.charAt(i));
+        i += 1;
+      }
+    }
+    return out;
+  }
+
+  function showScreen(id){
+    document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
+    $(id).classList.add('active');
+    $('quit-btn').style.display = (id === 'screen-game') ? 'inline-flex' : 'none';
+  }
+
+  function levelFor(n){
+    var levels = THEMES[state.pack].levels;
+    for (var i = levels.length - 1; i >= 0; i--){
+      if (n >= levels[i].min) return levels[i];
+    }
+    return levels[0];
+  }
+  function refreshTopbar(){
+    $('crystal-count').textContent = state.crystals;
+    var lvl = levelFor(state.crystals);
+    $('level-pill').textContent = lvl.emoji + ' ' + lvl.title;
+  }
+  function applyPack(){
+    var theme = THEMES[state.pack];
+    document.documentElement.setAttribute('data-pack', state.pack);
+    $('mascot-badge').textContent = theme.mascot;
+    $('app-name').textContent = theme.appName;
+    $('currency-icon').textContent = theme.currencyIcon;
+    $('hero-title').textContent = theme.heroTitle;
+    $('hero-sub').textContent = theme.heroSub;
+    $('topbar-sub').textContent = theme.homeTagline;
+    refreshTopbar();
+  }
+  function renderThemeSwitcher(){
+    var row = $('theme-switcher-row');
+    row.innerHTML = '';
+    Object.keys(THEMES).forEach(function(id){
+      var theme = THEMES[id];
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'theme-btn' + (id === state.pack ? ' active' : '');
+      btn.textContent = theme.selectorIcon + ' ' + theme.label;
+      btn.addEventListener('click', function(){
+        if (state.pack === id) return;
+        state.pack = id;
+        savePack();
+        applyPack();
+        renderThemeSwitcher();
+        renderHome();
+      });
+      row.appendChild(btn);
+    });
+  }
+
+  /* ---------------- Game data ---------------- */
+  var MIRROR_LETTERS = ['b','d','p','q'];
+  var MIRROR_HINTS = {
+    b: 'La bosse est à droite, le bâton pointe en haut ⬆️➡️',
+    d: 'La bosse est à gauche, le bâton pointe en haut ⬆️⬅️',
+    p: 'La bosse est à droite, le bâton pointe en bas ⬇️➡️',
+    q: 'La bosse est à gauche, le bâton pointe en bas ⬇️⬅️'
+  };
+
+  var CONSONANTS = ['b','d','p','f','m','l','s','t','v','r','n'];
+  var VOYELLES = ['a','i','o','u'];
+
+  /* Alphabet de découverte : une image bien reconnaissable par lettre, commune aux 3 thèmes
+     (l'association lettre/image n'a pas de raison de changer selon l'univers choisi). */
+  var ALPHABET_BANK = [
+    {letter:'A', word:'avion', emoji:'✈️'},
+    {letter:'B', word:'ballon', emoji:'🎈'},
+    {letter:'C', word:'chat', emoji:'🐱'},
+    {letter:'D', word:'dauphin', emoji:'🐬'},
+    {letter:'E', word:'étoile', emoji:'⭐'},
+    {letter:'F', word:'fleur', emoji:'🌸'},
+    {letter:'G', word:'gâteau', emoji:'🎂'},
+    {letter:'H', word:'hibou', emoji:'🦉'},
+    {letter:'I', word:'igloo', emoji:'🧊'},
+    {letter:'J', word:'jus', emoji:'🧃'},
+    {letter:'K', word:'kangourou', emoji:'🦘'},
+    {letter:'L', word:'lune', emoji:'🌙'},
+    {letter:'M', word:'maison', emoji:'🏠'},
+    {letter:'N', word:'nuage', emoji:'☁️'},
+    {letter:'O', word:'oiseau', emoji:'🐦'},
+    {letter:'P', word:'poisson', emoji:'🐟'},
+    {letter:'Q', word:'quille', emoji:'🎳'},
+    {letter:'R', word:'robot', emoji:'🤖'},
+    {letter:'S', word:'serpent', emoji:'🐍'},
+    {letter:'T', word:'tortue', emoji:'🐢'},
+    {letter:'U', word:'usine', emoji:'🏭'},
+    {letter:'V', word:'voiture', emoji:'🚗'},
+    {letter:'W', word:'wagon', emoji:'🚃'},
+    {letter:'X', word:'xylophone', emoji:'🎶'},
+    {letter:'Y', word:'yoyo', emoji:'🪀'},
+    {letter:'Z', word:'zèbre', emoji:'🦓'}
+  ];
+
+  var WORD_BANK_MAGIC = [
+    {word:'papa', syll:['pa','pa'], emoji:'👨'},
+    {word:'vélo', syll:['vé','lo'], emoji:'🚲'},
+    {word:'lapin', syll:['la','pin'], emoji:'🐰'},
+    {word:'soleil', syll:['so','leil'], emoji:'☀️'},
+    {word:'bateau', syll:['ba','teau'], emoji:'⛵'},
+    {word:'chapeau', syll:['cha','peau'], emoji:'🎩'},
+    {word:'château', syll:['châ','teau'], emoji:'🏰'},
+    {word:'dragon', syll:['dra','gon'], emoji:'🐉'},
+    {word:'tomate', syll:['to','ma','te'], emoji:'🍅'},
+    {word:'licorne', syll:['li','cor','ne'], emoji:'🦄'}
+  ];
+
+  var HUNT_BANK_MAGIC = [
+    {word:'chat', emoji:'🐱', decoys:[{word:'chapeau', emoji:'🎩'},{word:'cheval', emoji:'🐴'}]},
+    {word:'balle', emoji:'🎾', decoys:[{word:'ballon', emoji:'🎈'},{word:'bateau', emoji:'⛵'}]},
+    {word:'lune', emoji:'🌙', decoys:[{word:'lapin', emoji:'🐰'},{word:'livre', emoji:'📖'}]},
+    {word:'rose', emoji:'🌹', decoys:[{word:'robe', emoji:'👗'},{word:'roi', emoji:'🤴'}]},
+    {word:'fée', emoji:'🧚', decoys:[{word:'feu', emoji:'🔥'},{word:'fleur', emoji:'🌸'}]},
+    {word:'pomme', emoji:'🍎', decoys:[{word:'poule', emoji:'🐔'},{word:'porte', emoji:'🚪'}]}
+  ];
+
+  var SENTENCE_BANK_MAGIC = [
+    {text:'Le chat dort.', caption:'le chat dort', emoji:'🐱',
+      decoys:[{caption:'le chien dort', emoji:'🐶'},{caption:'le chat saute', emoji:'🐱'}]},
+    {text:'Papa a un vélo.', caption:'papa a un vélo', emoji:'🚲',
+      decoys:[{caption:'maman a un vélo', emoji:'🚲'},{caption:'papa a un bateau', emoji:'⛵'}]},
+    {text:'La licorne vole.', caption:'la licorne vole', emoji:'🦄',
+      decoys:[{caption:'le dragon vole', emoji:'🐉'},{caption:'la licorne dort', emoji:'🦄'}]},
+    {text:'Le lapin saute.', caption:'le lapin saute', emoji:'🐰',
+      decoys:[{caption:'le chat saute', emoji:'🐱'},{caption:'le lapin dort', emoji:'🐰'}]},
+    {text:'La fée a une baguette.', caption:'la fée a une baguette', emoji:'🪄',
+      decoys:[{caption:'le roi a une baguette', emoji:'🤴'},{caption:'la fée a une couronne', emoji:'👑'}]},
+    {text:'Le dragon a des ailes.', caption:'le dragon a des ailes', emoji:'🐉',
+      decoys:[{caption:'la licorne a des ailes', emoji:'🦄'},{caption:'le dragon a une queue', emoji:'🐉'}]},
+    {text:'Le château est grand.', caption:'le château est grand', emoji:'🏰',
+      decoys:[{caption:'le château est petit', emoji:'🏰'},{caption:'le dragon est grand', emoji:'🐉'}]},
+    {text:'La princesse porte une couronne.', caption:'la princesse porte une couronne', emoji:'👸',
+      decoys:[{caption:'le roi porte une couronne', emoji:'🤴'},{caption:'la princesse porte une robe', emoji:'👗'}]}
+  ];
+
+  /* Chaque histoire décrit 3 personnages avec un élément qui leur est propre (lieu ou action).
+     La scène correcte reprend exactement ces 3 associations ; chaque scène-leurre échange
+     l'élément de deux personnages, pour obliger à vérifier chaque détail du texte. */
+  var SCENE_BANK_MAGIC = [
+    {
+      sentences:['Dans le jardin magique, la licorne joue près de la fontaine.','Le dragon dort sous le grand arbre.','La fée vole au-dessus du château.'],
+      correct:[['🦄','⛲'],['🐉','🌳'],['🧚','🏰']],
+      decoyA:[['🦄','🌳'],['🐉','⛲'],['🧚','🏰']],
+      decoyB:[['🦄','⛲'],['🐉','🏰'],['🧚','🌳']]
+    },
+    {
+      sentences:['La princesse cherche sa couronne dans la forêt.','Le lapin creuse un trou près du buisson.','Le renard observe la lune depuis la colline.'],
+      correct:[['👸','🌲'],['🐰','🌿'],['🦊','🌙']],
+      decoyA:[['👸','🌿'],['🐰','🌲'],['🦊','🌙']],
+      decoyB:[['👸','🌲'],['🐰','🌙'],['🦊','🌿']]
+    },
+    {
+      sentences:['Le petit dragon apprend à voler au-dessus du lac.','La licorne galope dans la prairie fleurie.','Le chevalier répare son bouclier devant le château.'],
+      correct:[['🐉','🌊'],['🦄','🌸'],['🛡️','🏰']],
+      decoyA:[['🐉','🌸'],['🦄','🌊'],['🛡️','🏰']],
+      decoyB:[['🐉','🌊'],['🦄','🏰'],['🛡️','🌸']]
+    },
+    {
+      sentences:['Au bord de la mer, le pirate cherche un trésor caché.','La sirène chante une jolie chanson.','Le crabe se cache sous une pierre.'],
+      correct:[['🏴‍☠️','💰'],['🧜‍♀️','🎵'],['🦀','🪨']],
+      decoyA:[['🏴‍☠️','🎵'],['🧜‍♀️','💰'],['🦀','🪨']],
+      decoyB:[['🏴‍☠️','💰'],['🧜‍♀️','🪨'],['🦀','🎵']]
+    },
+    {
+      sentences:['Dans la forêt enchantée, le hibou observe la nuit depuis son arbre.','L\'écureuil ramasse des noisettes près du chemin.','Le renard court après un papillon doré.'],
+      correct:[['🦉','🌙'],['🐿️','🌰'],['🦊','🦋']],
+      decoyA:[['🦉','🌰'],['🐿️','🌙'],['🦊','🦋']],
+      decoyB:[['🦉','🌙'],['🐿️','🦋'],['🦊','🌰']]
+    },
+    {
+      sentences:['Au marché du village, le boulanger sort un gâteau du four.','La fleuriste arrose ses roses rouges.','Le forgeron fabrique une épée brillante.'],
+      correct:[['👨‍🍳','🎂'],['💐','🌹'],['⚒️','⚔️']],
+      decoyA:[['👨‍🍳','🌹'],['💐','🎂'],['⚒️','⚔️']],
+      decoyB:[['👨‍🍳','🎂'],['💐','⚔️'],['⚒️','🌹']]
+    },
+    {
+      sentences:['Sur la banquise, le petit phoque glisse sur la glace.','Le manchot pêche un poisson argenté.','L\'ours polaire creuse un igloo.'],
+      correct:[['🦭','🧊'],['🐧','🐟'],['🐻‍❄️','🛖']],
+      decoyA:[['🦭','🐟'],['🐧','🧊'],['🐻‍❄️','🛖']],
+      decoyB:[['🦭','🧊'],['🐧','🛖'],['🐻‍❄️','🐟']]
+    },
+    {
+      sentences:['Dans le grand château, le roi signe un parchemin doré.','La princesse peint un joli tableau.','Le chevalier entraîne son cheval blanc.'],
+      correct:[['🤴','📜'],['👸','🎨'],['🛡️','🐴']],
+      decoyA:[['🤴','🎨'],['👸','📜'],['🛡️','🐴']],
+      decoyB:[['🤴','📜'],['👸','🐴'],['🛡️','🎨']]
+    }
+  ];
+
+  /* ================= Univers Espace ================= */
+  var WORD_BANK_SPACE = [
+    {word:'fusée', syll:['fu','sée'], emoji:'🚀'},
+    {word:'astronaute', syll:['as','tro','naute'], emoji:'👨‍🚀'},
+    {word:'planète', syll:['pla','nète'], emoji:'🪐'},
+    {word:'étoile', syll:['é','toile'], emoji:'⭐'},
+    {word:'comète', syll:['co','mète'], emoji:'☄️'},
+    {word:'robot', syll:['ro','bot'], emoji:'🤖'},
+    {word:'lune', syll:['lu','ne'], emoji:'🌙'},
+    {word:'galaxie', syll:['ga','la','xie'], emoji:'🌌'},
+    {word:'satellite', syll:['sa','tel','lite'], emoji:'🛰️'},
+    {word:'alien', syll:['a','lien'], emoji:'👽'}
+  ];
+
+  var HUNT_BANK_SPACE = [
+    {word:'lune', emoji:'🌙', decoys:[{word:'lunette', emoji:'👓'},{word:'lundi', emoji:'📅'}]},
+    {word:'étoile', emoji:'⭐', decoys:[{word:'étage', emoji:'🏢'},{word:'étang', emoji:'🌾'}]},
+    {word:'fusée', emoji:'🚀', decoys:[{word:'fumée', emoji:'💨'},{word:'furet', emoji:'🦡'}]},
+    {word:'planète', emoji:'🪐', decoys:[{word:'plage', emoji:'🏖️'},{word:'plante', emoji:'🌱'}]},
+    {word:'robot', emoji:'🤖', decoys:[{word:'robe', emoji:'👗'},{word:'robinet', emoji:'🚰'}]},
+    {word:'astronaute', emoji:'👨‍🚀', decoys:[{word:'astre', emoji:'✨'},{word:'asticot', emoji:'🪱'}]}
+  ];
+
+  var SENTENCE_BANK_SPACE = [
+    {text:'La fusée décolle.', caption:'la fusée décolle', emoji:'🚀',
+      decoys:[{caption:'l\'avion décolle', emoji:'✈️'},{caption:'la fusée atterrit', emoji:'🚀'}]},
+    {text:'L\'astronaute flotte dans l\'espace.', caption:'l\'astronaute flotte', emoji:'👨‍🚀',
+      decoys:[{caption:'le robot flotte', emoji:'🤖'},{caption:'l\'astronaute marche sur la lune', emoji:'👨‍🚀'}]},
+    {text:'La lune brille la nuit.', caption:'la lune brille la nuit', emoji:'🌙',
+      decoys:[{caption:'le soleil brille la nuit', emoji:'☀️'},{caption:'la lune brille le jour', emoji:'🌙'}]},
+    {text:'Le robot répare la fusée.', caption:'le robot répare la fusée', emoji:'🤖',
+      decoys:[{caption:'l\'astronaute répare la fusée', emoji:'👨‍🚀'},{caption:'le robot lave la fusée', emoji:'🤖'}]},
+    {text:'La planète tourne autour du soleil.', caption:'la planète tourne', emoji:'🪐',
+      decoys:[{caption:'la lune tourne autour du soleil', emoji:'🌙'},{caption:'la planète tourne autour de la lune', emoji:'🪐'}]},
+    {text:'L\'alien découvre une étoile.', caption:'l\'alien découvre une étoile', emoji:'👽',
+      decoys:[{caption:'l\'astronaute découvre une étoile', emoji:'👨‍🚀'},{caption:'l\'alien découvre une planète', emoji:'👽'}]},
+    {text:'La comète traverse le ciel.', caption:'la comète traverse le ciel', emoji:'☄️',
+      decoys:[{caption:'la fusée traverse le ciel', emoji:'🚀'},{caption:'la comète traverse l\'espace', emoji:'☄️'}]},
+    {text:'Le satellite observe la Terre.', caption:'le satellite observe la Terre', emoji:'🛰️',
+      decoys:[{caption:'le robot observe la Terre', emoji:'🤖'},{caption:'le satellite observe la lune', emoji:'🛰️'}]}
+  ];
+
+  var SCENE_BANK_SPACE = [
+    {
+      sentences:['Sur la Lune, l\'astronaute plante un drapeau.','Le robot ramasse une pierre grise.','L\'alien observe de loin derrière un rocher.'],
+      correct:[['👨‍🚀','🚩'],['🤖','🪨'],['👽','🛸']],
+      decoyA:[['👨‍🚀','🪨'],['🤖','🚩'],['👽','🛸']],
+      decoyB:[['👨‍🚀','🚩'],['🤖','🛸'],['👽','🪨']]
+    },
+    {
+      sentences:['Dans la fusée, le pilote surveille les commandes.','La scientifique étudie une étoile.','Le robot répare un panneau électrique.'],
+      correct:[['🧑‍✈️','🕹️'],['🧑‍🔬','⭐'],['🤖','🔧']],
+      decoyA:[['🧑‍✈️','⭐'],['🧑‍🔬','🕹️'],['🤖','🔧']],
+      decoyB:[['🧑‍✈️','🕹️'],['🧑‍🔬','🔧'],['🤖','⭐']]
+    },
+    {
+      sentences:['Près de la comète, le vaisseau fonce à toute vitesse.','L\'astronaute prend une photo.','Le robot enregistre les données.'],
+      correct:[['🛸','☄️'],['👨‍🚀','📷'],['🤖','💾']],
+      decoyA:[['🛸','📷'],['👨‍🚀','☄️'],['🤖','💾']],
+      decoyB:[['🛸','☄️'],['👨‍🚀','💾'],['🤖','📷']]
+    },
+    {
+      sentences:['Sur Mars, le robot creuse le sol rouge.','L\'astronaute installe une tente.','La navette attend non loin, prête à repartir.'],
+      correct:[['🤖','🕳️'],['👨‍🚀','⛺'],['🚀','⏳']],
+      decoyA:[['🤖','⛺'],['👨‍🚀','🕳️'],['🚀','⏳']],
+      decoyB:[['🤖','🕳️'],['👨‍🚀','⏳'],['🚀','⛺']]
+    },
+    {
+      sentences:['Dans la station spatiale, l\'astronaute flotte près du hublot.','Le chat de l\'espace joue avec une balle.','Le robot prépare le repas.'],
+      correct:[['👨‍🚀','🪟'],['🐱','⚽'],['🤖','🍽️']],
+      decoyA:[['👨‍🚀','⚽'],['🐱','🪟'],['🤖','🍽️']],
+      decoyB:[['👨‍🚀','🪟'],['🐱','🍽️'],['🤖','⚽']]
+    },
+    {
+      sentences:['Loin dans la galaxie, la planète violette tourne lentement.','L\'étoile brille très fort.','La comète file à toute vitesse.'],
+      correct:[['🪐','🌀'],['⭐','✨'],['☄️','💨']],
+      decoyA:[['🪐','✨'],['⭐','🌀'],['☄️','💨']],
+      decoyB:[['🪐','🌀'],['⭐','💨'],['☄️','✨']]
+    },
+    {
+      sentences:['À bord du vaisseau, le capitaine donne des ordres.','L\'ingénieure répare le moteur.','Le petit robot apporte les outils.'],
+      correct:[['🧑‍✈️','📢'],['👩‍🔧','⚙️'],['🤖','🧰']],
+      decoyA:[['🧑‍✈️','⚙️'],['👩‍🔧','📢'],['🤖','🧰']],
+      decoyB:[['🧑‍✈️','📢'],['👩‍🔧','🧰'],['🤖','⚙️']]
+    },
+    {
+      sentences:['Sur la nouvelle planète, l\'explorateur plante son drapeau.','Le robot analyse les roches.','L\'alien curieux les observe de loin.'],
+      correct:[['🧑‍🚀','🚩'],['🤖','🪨'],['👽','👀']],
+      decoyA:[['🧑‍🚀','🪨'],['🤖','🚩'],['👽','👀']],
+      decoyB:[['🧑‍🚀','🚩'],['🤖','👀'],['👽','🪨']]
+    }
+  ];
+
+  /* ================= Univers Dinosaures ================= */
+  var WORD_BANK_DINO = [
+    {word:'dinosaure', syll:['di','no','saure'], emoji:'🦕'},
+    {word:'volcan', syll:['vol','can'], emoji:'🌋'},
+    {word:'fossile', syll:['fos','sile'], emoji:'🦴'},
+    {word:'jungle', syll:['jun','gle'], emoji:'🌴'},
+    {word:'lézard', syll:['lé','zard'], emoji:'🦎'},
+    {word:'caverne', syll:['ca','ver','ne'], emoji:'🕳️'},
+    {word:'tonnerre', syll:['ton','ner','re'], emoji:'⛈️'},
+    {word:'montagne', syll:['mon','ta','gne'], emoji:'⛰️'},
+    {word:'rivière', syll:['ri','viè','re'], emoji:'🌊'},
+    {word:'squelette', syll:['sque','le','tte'], emoji:'💀'}
+  ];
+
+  var HUNT_BANK_DINO = [
+    {word:'griffe', emoji:'🐾', decoys:[{word:'grimace', emoji:'😬'},{word:'grille', emoji:'🔲'}]},
+    {word:'volcan', emoji:'🌋', decoys:[{word:'volet', emoji:'🚪'},{word:'voleur', emoji:'🦹'}]},
+    {word:'jungle', emoji:'🌴', decoys:[{word:'jupe', emoji:'👗'},{word:'jus', emoji:'🧃'}]},
+    {word:'fossile', emoji:'🦴', decoys:[{word:'fourmi', emoji:'🐜'},{word:'fontaine', emoji:'⛲'}]},
+    {word:'lézard', emoji:'🦎', decoys:[{word:'légume', emoji:'🥦'},{word:'lettre', emoji:'✉️'}]},
+    {word:'montagne', emoji:'⛰️', decoys:[{word:'monstre', emoji:'👹'},{word:'monnaie', emoji:'🪙'}]}
+  ];
+
+  var SENTENCE_BANK_DINO = [
+    {text:'Le dinosaure mange des feuilles.', caption:'le dinosaure mange des feuilles', emoji:'🦕',
+      decoys:[{caption:'le lézard mange des feuilles', emoji:'🦎'},{caption:'le dinosaure mange un poisson', emoji:'🦕'}]},
+    {text:'Le volcan crache du feu.', caption:'le volcan crache du feu', emoji:'🌋',
+      decoys:[{caption:'le dragon crache du feu', emoji:'🐉'},{caption:'le volcan crache de la fumée', emoji:'🌋'}]},
+    {text:'L\'explorateur trouve un fossile.', caption:'l\'explorateur trouve un fossile', emoji:'🦴',
+      decoys:[{caption:'le robot trouve un fossile', emoji:'🤖'},{caption:'l\'explorateur trouve un œuf', emoji:'🥚'}]},
+    {text:'Le tyrannosaure court dans la jungle.', caption:'le tyrannosaure court', emoji:'🦖',
+      decoys:[{caption:'le lézard court dans la jungle', emoji:'🦎'},{caption:'le tyrannosaure court dans la caverne', emoji:'🦖'}]},
+    {text:'L\'œuf éclot près de la rivière.', caption:'l\'œuf éclot près de la rivière', emoji:'🥚',
+      decoys:[{caption:'le poisson éclot près de la rivière', emoji:'🐟'},{caption:'l\'œuf tombe près de la rivière', emoji:'🥚'}]},
+    {text:'Le ptérodactyle vole au-dessus du volcan.', caption:'le ptérodactyle vole', emoji:'🦅',
+      decoys:[{caption:'la fée vole au-dessus du volcan', emoji:'🧚'},{caption:'le ptérodactyle vole au-dessus de la jungle', emoji:'🦅'}]},
+    {text:'Les enfants découvrent un squelette.', caption:'les enfants découvrent un squelette', emoji:'💀',
+      decoys:[{caption:'le robot découvre un squelette', emoji:'🤖'},{caption:'les enfants découvrent un volcan', emoji:'🌋'}]},
+    {text:'Le petit dinosaure dort dans son nid.', caption:'le petit dinosaure dort dans son nid', emoji:'🦕',
+      decoys:[{caption:'le petit dinosaure dort dans une caverne', emoji:'🦕'},{caption:'le grand dinosaure dort dans son nid', emoji:'🦕'}]}
+  ];
+
+  var SCENE_BANK_DINO = [
+    {
+      sentences:['Dans la jungle préhistorique, le tricératops broute des feuilles vertes.','Le tyrannosaure chasse près de la rivière.','Le ptérodactyle vole au-dessus des arbres.'],
+      correct:[['🦕','🌿'],['🦖','🌊'],['🦅','🌳']],
+      decoyA:[['🦕','🌊'],['🦖','🌿'],['🦅','🌳']],
+      decoyB:[['🦕','🌿'],['🦖','🌳'],['🦅','🌊']]
+    },
+    {
+      sentences:['Au bord du volcan, le petit dinosaure a peur du feu.','L\'explorateur prend des photos.','Le robot analyse les roches chaudes.'],
+      correct:[['🦕','🔥'],['🧭','📷'],['🤖','🪨']],
+      decoyA:[['🦕','📷'],['🧭','🔥'],['🤖','🪨']],
+      decoyB:[['🦕','🔥'],['🧭','🪨'],['🤖','📷']]
+    },
+    {
+      sentences:['Dans la caverne sombre, la famille de dinosaures dort profondément.','La chauve-souris vole silencieusement.','L\'écureuil préhistorique grignote une noisette.'],
+      correct:[['🦕','💤'],['🦇','🌙'],['🐿️','🌰']],
+      decoyA:[['🦕','🌙'],['🦇','💤'],['🐿️','🌰']],
+      decoyB:[['🦕','💤'],['🦇','🌰'],['🐿️','🌙']]
+    },
+    {
+      sentences:['Près de la rivière, le diplodocus boit de l\'eau fraîche.','Le crocodile guette sous la surface.','La libellule danse au-dessus des vagues.'],
+      correct:[['🦕','💧'],['🐊','👀'],['🦋','🌊']],
+      decoyA:[['🦕','👀'],['🐊','💧'],['🦋','🌊']],
+      decoyB:[['🦕','💧'],['🐊','🌊'],['🦋','👀']]
+    },
+    {
+      sentences:['Sur la montagne, le tricératops grimpe lentement.','L\'aigle observe depuis le ciel.','Le petit lézard se cache sous une pierre.'],
+      correct:[['🦕','⛰️'],['🦅','☁️'],['🦎','🪨']],
+      decoyA:[['🦕','☁️'],['🦅','⛰️'],['🦎','🪨']],
+      decoyB:[['🦕','⛰️'],['🦅','🪨'],['🦎','☁️']]
+    },
+    {
+      sentences:['Dans le musée, la paléontologue nettoie un os ancien.','L\'enfant regarde le squelette avec des yeux ronds.','Le gardien surveille la salle.'],
+      correct:[['👩‍🔬','🦴'],['🧒','💀'],['👮','🚪']],
+      decoyA:[['👩‍🔬','💀'],['🧒','🦴'],['👮','🚪']],
+      decoyB:[['👩‍🔬','🦴'],['🧒','🚪'],['👮','💀']]
+    },
+    {
+      sentences:['Il y a longtemps, le stégosaure marchait lentement dans la prairie.','Le petit mammifère se cachait dans un trou.','Le ptérodactyle criait dans le ciel orange.'],
+      correct:[['🦕','🌾'],['🐭','🕳️'],['🦅','🌇']],
+      decoyA:[['🦕','🕳️'],['🐭','🌾'],['🦅','🌇']],
+      decoyB:[['🦕','🌾'],['🐭','🌇'],['🦅','🕳️']]
+    },
+    {
+      sentences:['Au camp de l\'expédition, l\'explorateur range son équipement.','La scientifique étudie une carte.','Le robot charge les échantillons de roche.'],
+      correct:[['🧭','🎒'],['🧑‍🔬','🗺️'],['🤖','🪨']],
+      decoyA:[['🧭','🗺️'],['🧑‍🔬','🎒'],['🤖','🪨']],
+      decoyB:[['🧭','🎒'],['🧑‍🔬','🪨'],['🤖','🗺️']]
+    }
+  ];
+
+  /* ---------------- Theme packs ---------------- */
+  var THEMES = {
+    magic: {
+      label:'Magie', selectorIcon:'🦄', mascot:'🦄',
+      appName:'Les Cristaux de Licorne', currencyIcon:'💎', homeTagline:'Aventure de lecture magique',
+      heroTitle:'Bienvenue au Royaume des Lettres ✨',
+      heroSub:'Choisis un portail magique pour t\'entraîner à lire. Chaque bonne réponse te rapporte des cristaux !',
+      levels:[
+        {min:0, title:'Apprentie Fée', emoji:'🧚'},
+        {min:10, title:'Chevalière des Lettres', emoji:'⚔️'},
+        {min:25, title:'Princesse des Syllabes', emoji:'👸'},
+        {min:50, title:'Gardienne du Royaume', emoji:'🛡️'},
+        {min:100, title:'Licorne Royale', emoji:'🦄'}
+      ],
+      portals:{
+        alphabet:{name:'L\'Alphabet Magique', icon:'🔤', desc:'Découvre chaque lettre et associe-la à son image, dans les deux sens !'},
+        mirror:{name:'Le Miroir Magique', icon:'🪞', desc:'Démasque les lettres jumelles b, d, p, q sans te faire piéger par leur reflet.'},
+        blend:{name:'La Fusion Magique', icon:'🪄', desc:'Écoute deux lettres, fusionne-les avec la baguette et trouve la syllabe.'},
+        path:{name:'Le Chemin des Syllabes', icon:'👣', desc:'Avance syllabe par syllabe pour lire un mot et trouver son image.'},
+        hunt:{name:'La Chasse aux Mots', icon:'🧭', desc:'Lis le mot en entier — les images pièges commencent presque pareil !'},
+        sentence:{name:'Le Grimoire des Phrases', icon:'📜', desc:'Lis une petite phrase magique en entier et trouve l\'image qui va avec.'},
+        scene:{name:'Le Tableau Vivant', icon:'🖼️', desc:'Lis un petit texte en entier, puis retrouve la scène qui lui correspond exactement.'}
+      },
+      blendPrompt:'Touche chaque lettre pour l\'écouter, puis agite la baguette !',
+      blendHint:'Écoute d\'abord les deux lettres pour débloquer la baguette !',
+      wandLabel:'🪄 Fusionner',
+      celebrateTitle:'Bravo, petite magicienne des mots !',
+      encourage:['Bravo ! ✨','Superbe ! 🌟','Magnifique ! 💫','Tu es une championne ! 👑','Parfait ! 🎉','Génial ! 🦄'],
+      wordBank:WORD_BANK_MAGIC, huntBank:HUNT_BANK_MAGIC, sentenceBank:SENTENCE_BANK_MAGIC, sceneBank:SCENE_BANK_MAGIC
+    },
+    space: {
+      label:'Espace', selectorIcon:'🚀', mascot:'🚀',
+      appName:'Les Cristaux Cosmiques', currencyIcon:'🌟', homeTagline:'Mission de lecture spatiale',
+      heroTitle:'Bienvenue dans la Galaxie des Lettres 🌌',
+      heroSub:'Choisis une mission pour t\'entraîner à lire. Chaque bonne réponse te rapporte une étoile !',
+      levels:[
+        {min:0, title:'Cadette de l\'Espace', emoji:'🧑‍🚀'},
+        {min:10, title:'Pilote Débutante', emoji:'🕹️'},
+        {min:25, title:'Exploratrice Stellaire', emoji:'🌟'},
+        {min:50, title:'Commandante de Bord', emoji:'🧑‍✈️'},
+        {min:100, title:'Astronaute Légendaire', emoji:'🚀'}
+      ],
+      portals:{
+        alphabet:{name:'L\'Alphabet Spatial', icon:'🔤', desc:'Découvre chaque lettre et associe-la à son image, dans les deux sens !'},
+        mirror:{name:'Le Miroir Spatial', icon:'🪞', desc:'Démasque les lettres jumelles b, d, p, q sans te faire piéger par leur reflet.'},
+        blend:{name:'La Fusion Stellaire', icon:'🛸', desc:'Écoute deux lettres, fusionne-les avec le vaisseau et trouve la syllabe.'},
+        path:{name:'Le Chemin des Étoiles', icon:'👣', desc:'Avance syllabe par syllabe pour lire un mot et trouver son image.'},
+        hunt:{name:'La Chasse aux Mots', icon:'🧭', desc:'Lis le mot en entier — les images pièges commencent presque pareil !'},
+        sentence:{name:'Le Journal de Bord', icon:'📜', desc:'Lis une petite phrase spatiale en entier et trouve l\'image qui va avec.'},
+        scene:{name:'La Mission Secrète', icon:'🖼️', desc:'Lis un petit texte en entier, puis retrouve la scène qui lui correspond exactement.'}
+      },
+      blendPrompt:'Touche chaque lettre pour l\'écouter, puis active le fusionneur !',
+      blendHint:'Écoute d\'abord les deux lettres pour activer le fusionneur !',
+      wandLabel:'🛸 Fusionner',
+      celebrateTitle:'Bravo, petite exploratrice de l\'espace !',
+      encourage:['Bravo ! ✨','Superbe ! 🌟','Mission réussie ! 🚀','Tu es une championne ! 🧑‍🚀','Parfait ! 🎉','Génial ! 👽'],
+      wordBank:WORD_BANK_SPACE, huntBank:HUNT_BANK_SPACE, sentenceBank:SENTENCE_BANK_SPACE, sceneBank:SCENE_BANK_SPACE
+    },
+    dino: {
+      label:'Dinosaures', selectorIcon:'🦖', mascot:'🦖',
+      appName:'Les Œufs de Dino', currencyIcon:'🥚', homeTagline:'Expédition de lecture préhistorique',
+      heroTitle:'Bienvenue dans la Vallée des Lettres 🌋',
+      heroSub:'Choisis une exploration pour t\'entraîner à lire. Chaque bonne réponse te rapporte un œuf !',
+      levels:[
+        {min:0, title:'Apprentie Paléontologue', emoji:'🔍'},
+        {min:10, title:'Chasseuse de Fossiles', emoji:'🦴'},
+        {min:25, title:'Exploratrice du Jurassique', emoji:'🌴'},
+        {min:50, title:'Gardienne des Dinosaures', emoji:'🦕'},
+        {min:100, title:'Reine du Crétacé', emoji:'🦖'}
+      ],
+      portals:{
+        alphabet:{name:'L\'Alphabet du Jurassique', icon:'🔤', desc:'Découvre chaque lettre et associe-la à son image, dans les deux sens !'},
+        mirror:{name:'Le Miroir du Jurassique', icon:'🪞', desc:'Démasque les lettres jumelles b, d, p, q sans te faire piéger par leur reflet.'},
+        blend:{name:'La Fusion Préhistorique', icon:'🦴', desc:'Écoute deux lettres, fusionne-les avec la griffe et trouve la syllabe.'},
+        path:{name:'Le Chemin des Fossiles', icon:'👣', desc:'Avance syllabe par syllabe pour lire un mot et trouver son image.'},
+        hunt:{name:'La Chasse aux Mots', icon:'🧭', desc:'Lis le mot en entier — les images pièges commencent presque pareil !'},
+        sentence:{name:'Le Carnet de l\'Explorateur', icon:'📜', desc:'Lis une petite phrase préhistorique en entier et trouve l\'image qui va avec.'},
+        scene:{name:'La Fresque Ancienne', icon:'🖼️', desc:'Lis un petit texte en entier, puis retrouve la scène qui lui correspond exactement.'}
+      },
+      blendPrompt:'Touche chaque lettre pour l\'écouter, puis rugis pour fusionner !',
+      blendHint:'Écoute d\'abord les deux lettres pour pouvoir rugir !',
+      wandLabel:'🦴 Fusionner',
+      celebrateTitle:'Bravo, petite exploratrice du Jurassique !',
+      encourage:['Bravo ! ✨','Superbe ! 🌟','Découverte incroyable ! 🦴','Tu es une championne ! 🦕','Parfait ! 🎉','Génial ! 🦖'],
+      wordBank:WORD_BANK_DINO, huntBank:HUNT_BANK_DINO, sentenceBank:SENTENCE_BANK_DINO, sceneBank:SCENE_BANK_DINO
+    }
+  };
+
+  /* ---------------- Round builders ---------------- */
+  function buildAlphabetRound(){
+    var chosen = pickN(ALPHABET_BANK, 6);
+    return chosen.map(function(item, i){
+      var mode = (i % 2 === 0) ? 'toImage' : 'toLetter';
+      var others = ALPHABET_BANK.filter(function(x){ return x.letter !== item.letter; });
+      var decoys = pickN(others, 2);
+      if (mode === 'toImage'){
+        var opts = shuffle([item].concat(decoys)).map(function(w){
+          return {key:w.letter, label:w.emoji, wordLabel:w.word, correct: w.letter === item.letter, kind:'emoji'};
+        });
+        return {type:'alphabet', mode:mode, letter:item.letter, word:item.word, emoji:item.emoji, options:opts};
+      } else {
+        var opts2 = shuffle([item].concat(decoys)).map(function(w){
+          return {key:w.letter, label:w.letter, correct: w.letter === item.letter, kind:'letter'};
+        });
+        return {type:'alphabet', mode:mode, letter:item.letter, word:item.word, emoji:item.emoji, options:opts2};
+      }
+    });
+  }
+
+  function buildMirrorRound(){
+    var qs = [];
+    for (var i = 0; i < 6; i++){
+      var target = MIRROR_LETTERS[i % MIRROR_LETTERS.length];
+      var mode = (i % 2 === 0) ? 'visual' : 'named';
+      var options = shuffle(MIRROR_LETTERS).map(function(l){ return {key:l, label:l, correct: l === target, kind:'letter'}; });
+      qs.push({type:'mirror', mode:mode, target:target, options: options});
+    }
+    return shuffle(qs);
+  }
+
+  function buildBlendRound(){
+    var qs = [];
+    var used = [];
+    for (var i = 0; i < 6; i++){
+      var c = CONSONANTS[Math.floor(Math.random()*CONSONANTS.length)];
+      var v = VOYELLES[Math.floor(Math.random()*VOYELLES.length)];
+      var syll = c + v;
+      var distractors = [];
+      var otherC = shuffle(CONSONANTS.filter(function(x){return x!==c;}))[0];
+      var otherV = shuffle(VOYELLES.filter(function(x){return x!==v;}))[0];
+      distractors.push(otherC + v);
+      distractors.push(c + otherV);
+      var opts = shuffle([syll, distractors[0], distractors[1]]).map(function(s){
+        return {key:s, label:s, correct: s === syll, kind:'syllable'};
+      });
+      qs.push({type:'blend', c:c, v:v, syll:syll, options:opts});
+    }
+    return qs;
+  }
+
+  function buildPathRound(){
+    var bank = THEMES[state.pack].wordBank;
+    var chosen = pickN(bank, 6);
+    return chosen.map(function(item){
+      var others = bank.filter(function(w){ return w.word !== item.word; });
+      var decoys = pickN(others, 2);
+      var opts = shuffle([item].concat(decoys)).map(function(w){
+        return {key:w.word, label:w.emoji, wordLabel:w.word, correct: w.word === item.word, kind:'emoji'};
+      });
+      return {type:'path', word:item.word, syll:item.syll, emoji:item.emoji, options:opts};
+    });
+  }
+
+  function buildHuntRound(){
+    return shuffle(THEMES[state.pack].huntBank).map(function(item){
+      var opts = shuffle([{word:item.word, emoji:item.emoji}].concat(item.decoys)).map(function(w){
+        return {key:w.word, label:w.emoji, wordLabel:w.word, correct: w.word === item.word, kind:'emoji'};
+      });
+      return {type:'hunt', word:item.word, emoji:item.emoji, options:opts};
+    });
+  }
+
+  function buildSentenceRound(){
+    var chosen = pickN(THEMES[state.pack].sentenceBank, 6);
+    return chosen.map(function(item){
+      var opts = shuffle([{caption:item.caption, emoji:item.emoji}].concat(item.decoys)).map(function(o){
+        return {key:o.caption, label:o.emoji, wordLabel:o.caption, correct: o.caption === item.caption, kind:'emoji'};
+      });
+      return {type:'sentence', text:item.text, words:item.text.split(' '), emoji:item.emoji, options:opts};
+    });
+  }
+
+  function buildSceneRound(){
+    var chosen = pickN(THEMES[state.pack].sceneBank, 5);
+    return chosen.map(function(item){
+      var candidates = shuffle([
+        {pairs:item.correct, correct:true},
+        {pairs:item.decoyA, correct:false},
+        {pairs:item.decoyB, correct:false}
+      ]);
+      var opts = candidates.map(function(c, idx){
+        return {key:'scene'+idx, pairs:c.pairs, correct:c.correct, kind:'scenepic'};
+      });
+      return {type:'scene', sentences:item.sentences, text:item.sentences.join(' '), options:opts};
+    });
+  }
+
+  var GAMES = [
+    { id:'alphabet', accentVar:'--gold', tintVar:'--gold-tint', build: buildAlphabetRound },
+    { id:'mirror', accentVar:'--rose', tintVar:'--rose-tint', build: buildMirrorRound },
+    { id:'blend', accentVar:'--gold-deep', tintVar:'--gold-tint', build: buildBlendRound },
+    { id:'path', accentVar:'--accent', tintVar:'--accent-tint', build: buildPathRound },
+    { id:'hunt', accentVar:'--success', tintVar:'--success-bg', build: buildHuntRound },
+    { id:'sentence', accentVar:'--sky', tintVar:'--sky-tint', build: buildSentenceRound },
+    { id:'scene', accentVar:'--amber', tintVar:'--amber-tint', build: buildSceneRound }
+  ];
+
+  /* ---------------- Home rendering ---------------- */
+  function renderHome(){
+    var grid = $('home-grid');
+    grid.innerHTML = '';
+    var portals = THEMES[state.pack].portals;
+    GAMES.forEach(function(g){
+      var meta = portals[g.id];
+      var card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'portal-card';
+      card.style.setProperty('--card-accent', 'var(' + g.accentVar + ')');
+      card.style.setProperty('--card-tint', 'var(' + g.tintVar + ')');
+      card.innerHTML =
+        '<div class="portal-icon" aria-hidden="true">' + meta.icon + '</div>' +
+        '<div class="portal-name">' + meta.name + '</div>' +
+        '<div class="portal-desc">' + meta.desc + '</div>' +
+        '<div class="portal-cta">Entrer dans le portail →</div>';
+      card.addEventListener('click', function(){ startGame(g.id); });
+      grid.appendChild(card);
+    });
+    refreshTopbar();
+  }
+
+  /* ---------------- Game flow ---------------- */
+  function getGame(id){ return GAMES.filter(function(g){ return g.id === id; })[0]; }
+
+  function startGame(id){
+    var game = getGame(id);
+    var meta = THEMES[state.pack].portals[id];
+    state.game = id;
+    state.round = game.build();
+    state.qIndex = 0;
+    state.roundGems = 0;
+    $('game-title').textContent = meta.icon + ' ' + meta.name;
+    $('topbar-sub').textContent = meta.name;
+    renderDots();
+    showScreen('screen-game');
+    renderQuestion();
+  }
+
+  function renderDots(){
+    var wrap = $('progress-dots');
+    wrap.innerHTML = '';
+    state.round.forEach(function(_, i){
+      var d = document.createElement('span');
+      d.className = 'dot' + (i < state.qIndex ? ' done' : (i === state.qIndex ? ' current' : ''));
+      wrap.appendChild(d);
+    });
+  }
+
+  function currentQ(){ return state.round[state.qIndex]; }
+
+  function renderQuestion(){
+    state.attempts = 0;
+    renderDots();
+    var q = currentQ();
+    var stage = $('stage-display');
+    var prompt = $('prompt-text');
+    var hint = $('hint-line');
+    var fb = $('feedback-banner');
+    fb.textContent = '';
+    fb.className = 'feedback-banner';
+    hint.innerHTML = '';
+    stage.innerHTML = '';
+    currentHint = '';
+    $('hint-btn').style.display = 'none';
+
+    if (q.type === 'alphabet'){
+      if (q.mode === 'toImage'){
+        prompt.textContent = 'Regarde bien cette lettre, puis touche l\'image qui commence pareil !';
+        stage.innerHTML = '<div class="letter-target">' + q.letter + '</div>';
+        var listenLetterBtn = document.createElement('button');
+        listenLetterBtn.className = 'listen-btn';
+        listenLetterBtn.type = 'button';
+        listenLetterBtn.textContent = '🔊 Écouter la lettre';
+        listenLetterBtn.addEventListener('click', function(){ speak(q.letter); });
+        stage.appendChild(listenLetterBtn);
+        renderOptions(q.options, 'emoji', 'opt-3', false, true);
+      } else {
+        prompt.textContent = 'Regarde bien cette image, puis touche la lettre par laquelle elle commence !';
+        stage.innerHTML = '<div class="image-target" aria-hidden="true">' + q.emoji + '</div>';
+        var helpLetterBtn = document.createElement('button');
+        helpLetterBtn.className = 'listen-btn';
+        helpLetterBtn.type = 'button';
+        helpLetterBtn.textContent = '🔊 Un peu d\'aide ?';
+        helpLetterBtn.addEventListener('click', function(){ speak(q.word); });
+        stage.appendChild(helpLetterBtn);
+        renderOptions(q.options, 'letter', 'opt-4');
+      }
+    }
+
+    else if (q.type === 'mirror'){
+      if (q.mode === 'visual'){
+        prompt.textContent = 'Trouve la lettre jumelle, identique à celle-ci :';
+        stage.innerHTML = '<div class="letter-target">' + q.target + '</div>';
+      } else {
+        prompt.textContent = 'Écoute puis touche la bonne lettre :';
+        stage.innerHTML =
+          '<div class="speak-target">' +
+            '<div class="icon-orb" aria-hidden="true">🔊</div>' +
+            '<button class="listen-btn" id="replay-btn" type="button">🔁 Réécouter</button>' +
+          '</div>';
+        $('replay-btn').addEventListener('click', function(){ speak(q.target); });
+        setTimeout(function(){ speak(q.target); }, 300);
+      }
+      currentHint = MIRROR_HINTS[q.target];
+      $('hint-btn').style.display = 'inline-flex';
+      renderOptions(q.options, 'letter', 'opt-4');
+    }
+
+    else if (q.type === 'blend'){
+      prompt.textContent = THEMES[state.pack].blendPrompt;
+      var tilesWrap = document.createElement('div');
+      tilesWrap.className = 'tile-row';
+      var cTile = document.createElement('button');
+      cTile.className = 'letter-tile'; cTile.type = 'button'; cTile.textContent = q.c;
+      var vTile = document.createElement('button');
+      vTile.className = 'letter-tile'; vTile.type = 'button'; vTile.textContent = q.v;
+      var tappedC = false, tappedV = false;
+      cTile.addEventListener('click', function(){ speak(q.c); tappedC = true; cTile.classList.add('tapped'); updateWand(); });
+      vTile.addEventListener('click', function(){ speak(q.v); tappedV = true; vTile.classList.add('tapped'); updateWand(); });
+      tilesWrap.appendChild(cTile); tilesWrap.appendChild(vTile);
+
+      var wandBtn = document.createElement('button');
+      wandBtn.className = 'wand-btn'; wandBtn.type = 'button';
+      wandBtn.innerHTML = THEMES[state.pack].wandLabel;
+      wandBtn.disabled = true;
+      wandBtn.addEventListener('click', function(){ speak(q.syll); revealOptions(); });
+
+      function updateWand(){
+        if (tappedC && tappedV){ wandBtn.disabled = false; hint.textContent = ''; }
+      }
+      hint.textContent = THEMES[state.pack].blendHint;
+
+      stage.appendChild(tilesWrap);
+      stage.appendChild(wandBtn);
+      renderOptions(q.options, 'syllable', 'opt-3', true);
+
+      function revealOptions(){
+        document.querySelectorAll('#options-grid .opt-btn').forEach(function(b){ b.style.visibility = 'visible'; });
+        hint.textContent = '';
+      }
+    }
+
+    else if (q.type === 'path'){
+      prompt.textContent = 'Touche chaque syllabe pour l\'écouter, puis trouve l\'image du mot.';
+      var row = document.createElement('div');
+      row.className = 'syllable-row';
+      q.syll.forEach(function(s){
+        var chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'syllable-chip';
+        chip.innerHTML = highlightGraphemes(s);
+        chip.addEventListener('click', function(){ speak(s); chip.classList.add('tapped'); });
+        row.appendChild(chip);
+      });
+      stage.appendChild(row);
+      var listenWhole = document.createElement('button');
+      listenWhole.className = 'listen-btn';
+      listenWhole.type = 'button';
+      listenWhole.textContent = '📖 Lire le mot entier';
+      listenWhole.addEventListener('click', function(){ speak(q.word); });
+      stage.appendChild(listenWhole);
+      renderOptions(q.options, 'emoji', 'opt-3');
+    }
+
+    else if (q.type === 'hunt'){
+      prompt.textContent = 'Lis bien le mot en entier avant de choisir — attention aux pièges !';
+      stage.innerHTML = '<div class="word-display">' + highlightGraphemes(q.word) + '</div>';
+      var helpBtn = document.createElement('button');
+      helpBtn.className = 'listen-btn';
+      helpBtn.type = 'button';
+      helpBtn.textContent = '🔊 Un peu d\'aide ?';
+      helpBtn.addEventListener('click', function(){ speak(q.word); });
+      stage.appendChild(helpBtn);
+      renderOptions(q.options, 'emoji', 'opt-3');
+    }
+
+    else if (q.type === 'sentence'){
+      prompt.textContent = 'Touche chaque mot pour l\'écouter, puis trouve l\'image qui correspond à la phrase.';
+      var wordsRow = document.createElement('div');
+      wordsRow.className = 'syllable-row';
+      q.words.forEach(function(w){
+        var chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'word-chip';
+        chip.innerHTML = highlightGraphemes(w);
+        chip.addEventListener('click', function(){ speak(w); chip.classList.add('tapped'); });
+        wordsRow.appendChild(chip);
+      });
+      stage.appendChild(wordsRow);
+      var listenSentence = document.createElement('button');
+      listenSentence.className = 'listen-btn';
+      listenSentence.type = 'button';
+      listenSentence.textContent = '📜 Lire toute la phrase';
+      listenSentence.addEventListener('click', function(){ speak(q.text); });
+      stage.appendChild(listenSentence);
+      renderOptions(q.options, 'emoji', 'opt-3');
+    }
+
+    else if (q.type === 'scene'){
+      prompt.textContent = 'Lis (ou écoute) tout le texte, puis touche la scène qui correspond exactement.';
+      var block = document.createElement('div');
+      block.className = 'paragraph-block';
+      q.sentences.forEach(function(s){
+        var line = document.createElement('button');
+        line.type = 'button';
+        line.className = 'sentence-line';
+        line.innerHTML = highlightGraphemes(s);
+        line.addEventListener('click', function(){ speak(s); line.classList.add('tapped'); });
+        block.appendChild(line);
+      });
+      stage.appendChild(block);
+      var listenText = document.createElement('button');
+      listenText.className = 'listen-btn';
+      listenText.type = 'button';
+      listenText.textContent = '🔊 Lire tout le texte';
+      listenText.addEventListener('click', function(){ speak(q.text); });
+      stage.appendChild(listenText);
+      renderOptions(q.options, 'scenepic', 'opt-3');
+    }
+  }
+
+  function renderOptions(options, kind, gridClass, startHidden, withAudio){
+    var grid = $('options-grid');
+    grid.className = 'options-grid ' + gridClass;
+    grid.innerHTML = '';
+    options.forEach(function(opt){
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'opt-btn ' + kind + '-opt';
+      btn.dataset.correct = opt.correct ? 'true' : 'false';
+      if (kind === 'letter'){
+        btn.textContent = opt.label;
+      } else if (kind === 'syllable'){
+        btn.textContent = opt.label;
+        if (startHidden) btn.style.visibility = 'hidden';
+      } else if (kind === 'emoji'){
+        btn.innerHTML = '<span aria-hidden="true">' + opt.label + '</span>' +
+          (withAudio ? '<span class="opt-audio-btn" role="button" tabindex="0" aria-label="Écouter le mot ' + escapeHtml(opt.wordLabel) + '">🔊</span>' : '') +
+          '<span class="opt-label">' + highlightGraphemes(opt.wordLabel) + '</span>';
+      } else if (kind === 'scenepic'){
+        var html = '';
+        opt.pairs.forEach(function(pair){
+          html += '<span class="scene-vignette" aria-hidden="true"><span>' + pair[0] + '</span><span>' + pair[1] + '</span></span>';
+        });
+        btn.innerHTML = html;
+        btn.setAttribute('aria-label', 'Scène ' + (opt.key || ''));
+      }
+      btn.addEventListener('click', function(){ handleAnswer(btn, opt); });
+      if (withAudio){
+        var audioBtn = btn.querySelector('.opt-audio-btn');
+        if (audioBtn){
+          audioBtn.addEventListener('click', function(e){ e.stopPropagation(); speak(opt.wordLabel); });
+          audioBtn.addEventListener('keydown', function(e){
+            if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); e.stopPropagation(); speak(opt.wordLabel); }
+          });
+        }
+      }
+      grid.appendChild(btn);
+    });
+  }
+
+  function setOptionsDisabled(disabled){
+    document.querySelectorAll('#options-grid .opt-btn').forEach(function(b){ b.disabled = disabled; });
+  }
+
+  function handleAnswer(btn, opt){
+    var fb = $('feedback-banner');
+    if (opt.correct){
+      btn.classList.add('correct-flash');
+      setOptionsDisabled(true);
+      fb.className = 'feedback-banner ok';
+      fb.textContent = pickEncouragement();
+      state.crystals += 1;
+      state.roundGems += 1;
+      saveCrystals();
+      refreshTopbar();
+      var q = currentQ();
+      if (q.type === 'path' || q.type === 'hunt'){ speak(q.word); }
+      else if (q.type === 'sentence'){ speak(q.text); }
+      else if (q.type === 'scene'){ speak('Bravo, c\'est la bonne scène !'); }
+      else if (q.type === 'alphabet'){ speak(q.mode === 'toImage' ? q.word : q.letter); }
+      setTimeout(advance, q.type === 'scene' ? 2000 : (q.type === 'sentence' ? 1500 : 1100));
+    } else {
+      state.attempts += 1;
+      btn.classList.add('wrong-flash');
+      setTimeout(function(){ btn.classList.remove('wrong-flash'); }, 500);
+      if (state.attempts >= 2){
+        fb.className = 'feedback-banner retry';
+        fb.textContent = 'Regarde, la voici en brillant ✨';
+        setOptionsDisabled(true);
+        document.querySelectorAll('#options-grid .opt-btn').forEach(function(b){
+          if (b.dataset.correct === 'true') b.classList.add('reveal-correct');
+        });
+        setTimeout(advance, 1400);
+      } else {
+        fb.className = 'feedback-banner retry';
+        fb.textContent = 'Presque ! Essaie encore 🌟';
+      }
+    }
+  }
+
+  function pickEncouragement(){
+    var list = THEMES[state.pack].encourage;
+    return list[Math.floor(Math.random()*list.length)];
+  }
+
+  function advance(){
+    state.qIndex += 1;
+    if (state.qIndex >= state.round.length){
+      endRound();
+    } else {
+      renderQuestion();
+    }
+  }
+
+  function endRound(){
+    var meta = THEMES[state.pack].portals[state.game];
+    $('celebrate-title').textContent = THEMES[state.pack].celebrateTitle;
+    $('celebrate-detail').textContent = 'Portail « ' + meta.name + ' » terminé avec ' + state.roundGems + ' bonnes réponses sur ' + state.round.length + ' !';
+    $('celebrate-gems').textContent = '+' + state.roundGems + ' ' + THEMES[state.pack].currencyIcon;
+    spawnConfetti();
+    refreshTopbar();
+    showScreen('screen-celebrate');
+  }
+
+  function spawnConfetti(){
+    var wrap = $('confetti-wrap');
+    wrap.innerHTML = '';
+    var pieces = ['✨','🌟','⭐', THEMES[state.pack].currencyIcon];
+    for (var i = 0; i < 10; i++){
+      var span = document.createElement('span');
+      span.className = 'confetti-piece';
+      span.textContent = pieces[Math.floor(Math.random()*pieces.length)];
+      span.style.left = (5 + Math.random()*90) + '%';
+      span.style.animationDelay = (Math.random()*0.4) + 's';
+      wrap.appendChild(span);
+    }
+  }
+
+  /* ---------------- Wiring ---------------- */
+  $('hint-btn').addEventListener('click', function(){ $('hint-line').textContent = currentHint; });
+  $('quit-btn').addEventListener('click', function(){
+    try{ window.speechSynthesis.cancel(); }catch(e){}
+    $('topbar-sub').textContent = THEMES[state.pack].homeTagline;
+    showScreen('screen-home');
+    renderHome();
+  });
+  $('btn-replay').addEventListener('click', function(){ startGame(state.game); });
+  $('btn-home').addEventListener('click', function(){
+    $('topbar-sub').textContent = THEMES[state.pack].homeTagline;
+    showScreen('screen-home');
+    renderHome();
+  });
+
+  /* ---------------- Plein écran (utile surtout sur tablette Android/Chrome,
+     où ça masque la barre d'adresse et réduit les balayages accidentels) ---------------- */
+  function supportsFullscreen(){
+    var el = document.documentElement;
+    return !!(el.requestFullscreen || el.webkitRequestFullscreen);
+  }
+  function isFullscreenActive(){
+    return !!(document.fullscreenElement || document.webkitFullscreenElement);
+  }
+  function toggleFullscreen(){
+    try{
+      if (!isFullscreenActive()){
+        var el = document.documentElement;
+        if (el.requestFullscreen) el.requestFullscreen().catch(function(){});
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen().catch(function(){});
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      }
+    }catch(e){}
+  }
+  function updateFullscreenBtn(){
+    var btn = $('fullscreen-btn');
+    if (!btn) return;
+    var active = isFullscreenActive();
+    btn.classList.toggle('active', active);
+    btn.title = active ? 'Quitter le plein écran' : 'Plein écran';
+    btn.setAttribute('aria-label', btn.title);
+  }
+  if (supportsFullscreen()){
+    var fsBtn = $('fullscreen-btn');
+    fsBtn.style.display = 'inline-flex';
+    fsBtn.addEventListener('click', toggleFullscreen);
+    document.addEventListener('fullscreenchange', updateFullscreenBtn);
+    document.addEventListener('webkitfullscreenchange', updateFullscreenBtn);
+  }
+
+  loadCrystals();
+  loadPack();
+  applyPack();
+  renderThemeSwitcher();
+  renderHome();
+})();
+</script>
+
+</body></html>
