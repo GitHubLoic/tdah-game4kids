@@ -307,6 +307,15 @@
     box-shadow:var(--shadow); flex:1; display:flex; flex-direction:column; gap:1.4rem; align-items:center; text-align:center;
   }
   .prompt-text{font-size:clamp(1.15rem,1.05rem + 0.5vw,1.4rem); color:var(--ink-soft); font-weight:500; margin:0;}
+  .prompt-row{display:flex; align-items:flex-start; justify-content:center; gap:0.5rem;}
+  .prompt-listen-btn{
+    flex:none; width:2.4rem; height:2.4rem; border-radius:50%;
+    background:var(--surface); border:2px solid var(--accent); color:var(--accent);
+    font-size:1.1rem; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; padding:0; margin-top:0.05rem;
+  }
+  .prompt-listen-btn:active{transform:scale(0.92);}
+  .prompt-listen-btn:focus-visible{outline:3px solid var(--accent); outline-offset:2px;}
 
   .stage-display{
     display:flex; align-items:center; justify-content:center; gap:0.8rem; flex-wrap:wrap; min-height:6rem;
@@ -543,7 +552,10 @@
       <div class="progress-dots" id="progress-dots"></div>
     </div>
     <div class="game-card" id="game-card">
-      <p class="prompt-text" id="prompt-text">Consigne</p>
+      <div class="prompt-row">
+        <p class="prompt-text" id="prompt-text">Consigne</p>
+        <button class="prompt-listen-btn" id="prompt-listen-btn" type="button" aria-label="Écouter la consigne" title="Écouter la consigne">🔊</button>
+      </div>
       <div class="stage-display" id="stage-display"></div>
       <button class="listen-btn" id="hint-btn" type="button" style="display:none;">💡 Indice</button>
       <div class="hint-line" id="hint-line"></div>
@@ -1673,6 +1685,7 @@
 
   /* ---------------- Wiring ---------------- */
   $('hint-btn').addEventListener('click', function(){ $('hint-line').textContent = currentHint; });
+  $('prompt-listen-btn').addEventListener('click', function(){ speak($('prompt-text').textContent); });
   $('quit-btn').addEventListener('click', function(){
     try{ window.speechSynthesis.cancel(); }catch(e){}
     $('topbar-sub').textContent = THEMES[state.pack].homeTagline;
