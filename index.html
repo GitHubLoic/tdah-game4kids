@@ -428,6 +428,14 @@
     display:flex; align-items:center; gap:0.35rem; justify-content:center;
     font-size:clamp(1.5rem,1.25rem + 1.8vw,2.4rem); line-height:1;
   }
+  .opt-btn.twopic-opt{
+    flex-direction:row; gap:0.6rem; min-height:8rem; padding:1rem 0.8rem;
+    border-color:var(--sky); background:var(--sky-tint);
+  }
+  .twopic-icons{
+    display:flex; align-items:center; justify-content:center; gap:0.5rem;
+    font-size:clamp(2.2rem,1.8rem + 2.6vw,3.6rem); line-height:1;
+  }
   .opt-btn .opt-label{font-size:0.98rem; font-weight:600; color:var(--ink-soft);}
   .opt-btn.correct-flash{background:var(--success-bg); border-color:var(--success);}
   .opt-btn.wrong-flash{background:var(--retry-bg); border-color:var(--retry);}
@@ -862,22 +870,22 @@
   ];
 
   var SENTENCE_BANK_MAGIC = [
-    {text:'Le chat dort.', caption:'le chat dort', emoji:'🐱',
-      decoys:[{caption:'le chien dort', emoji:'🐶'},{caption:'le chat saute', emoji:'🐱'}]},
-    {text:'Papa a un vélo.', caption:'papa a un vélo', emoji:'🚲',
-      decoys:[{caption:'maman a un vélo', emoji:'🚲'},{caption:'papa a un bateau', emoji:'⛵'}]},
-    {text:'La licorne vole.', caption:'la licorne vole', emoji:'🦄',
-      decoys:[{caption:'le dragon vole', emoji:'🐉'},{caption:'la licorne dort', emoji:'🦄'}]},
-    {text:'Le lapin saute.', caption:'le lapin saute', emoji:'🐰',
-      decoys:[{caption:'le chat saute', emoji:'🐱'},{caption:'le lapin dort', emoji:'🐰'}]},
-    {text:'La fée a une baguette.', caption:'la fée a une baguette', emoji:'🪄',
-      decoys:[{caption:'le roi a une baguette', emoji:'🤴'},{caption:'la fée a une couronne', emoji:'👑'}]},
-    {text:'Le dragon a des ailes.', caption:'le dragon a des ailes', emoji:'🐉',
-      decoys:[{caption:'la licorne a des ailes', emoji:'🦄'},{caption:'le dragon a une queue', emoji:'🐉'}]},
-    {text:'Le château est grand.', caption:'le château est grand', emoji:'🏰',
-      decoys:[{caption:'le château est petit', emoji:'🏰'},{caption:'le dragon est grand', emoji:'🐉'}]},
-    {text:'La princesse porte une couronne.', caption:'la princesse porte une couronne', emoji:'👸',
-      decoys:[{caption:'le roi porte une couronne', emoji:'🤴'},{caption:'la princesse porte une robe', emoji:'👗'}]}
+    {text:'Le chat dort.', caption:'le chat dort', icons:['🐱','💤'],
+      decoys:[{caption:'le chien dort', icons:['🐶','💤']},{caption:'le chat saute', icons:['🐱','🤸']}]},
+    {text:'Papa a un vélo.', caption:'papa a un vélo', icons:['👨','🚲'],
+      decoys:[{caption:'maman a un vélo', icons:['👩','🚲']},{caption:'papa a un bateau', icons:['👨','⛵']}]},
+    {text:'La licorne vole.', caption:'la licorne vole', icons:['🦄','🪽'],
+      decoys:[{caption:'le dragon vole', icons:['🐉','🪽']},{caption:'la licorne dort', icons:['🦄','💤']}]},
+    {text:'Le lapin saute.', caption:'le lapin saute', icons:['🐰','🤸'],
+      decoys:[{caption:'le chat saute', icons:['🐱','🤸']},{caption:'le lapin dort', icons:['🐰','💤']}]},
+    {text:'La fée a une baguette.', caption:'la fée a une baguette', icons:['🧚','🪄'],
+      decoys:[{caption:'le roi a une baguette', icons:['🤴','🪄']},{caption:'la fée a une couronne', icons:['🧚','👑']}]},
+    {text:'Le dragon a des ailes.', caption:'le dragon a des ailes', icons:['🐉','🪽'],
+      decoys:[{caption:'la licorne a des ailes', icons:['🦄','🪽']},{caption:'le dragon a une queue', icons:['🐉','➰']}]},
+    {text:'Le château est grand.', caption:'le château est grand', icons:['🏰','🔼'],
+      decoys:[{caption:'le château est petit', icons:['🏰','🔽']},{caption:'le dragon est grand', icons:['🐉','🔼']}]},
+    {text:'La princesse porte une couronne.', caption:'la princesse porte une couronne', icons:['👸','👑'],
+      decoys:[{caption:'le roi porte une couronne', icons:['🤴','👑']},{caption:'la princesse porte une robe', icons:['👸','👗']}]}
   ];
 
   /* Chaque histoire décrit 3 personnages avec un élément qui leur est propre (lieu ou action).
@@ -958,22 +966,22 @@
   ];
 
   var SENTENCE_BANK_SPACE = [
-    {text:'La fusée décolle.', caption:'la fusée décolle', emoji:'🚀',
-      decoys:[{caption:'l\'avion décolle', emoji:'✈️'},{caption:'la fusée atterrit', emoji:'🚀'}]},
-    {text:'L\'astronaute flotte dans l\'espace.', caption:'l\'astronaute flotte', emoji:'👨‍🚀',
-      decoys:[{caption:'le robot flotte', emoji:'🤖'},{caption:'l\'astronaute marche sur la lune', emoji:'👨‍🚀'}]},
-    {text:'La lune brille la nuit.', caption:'la lune brille la nuit', emoji:'🌙',
-      decoys:[{caption:'le soleil brille la nuit', emoji:'☀️'},{caption:'la lune brille le jour', emoji:'🌙'}]},
-    {text:'Le robot répare la fusée.', caption:'le robot répare la fusée', emoji:'🤖',
-      decoys:[{caption:'l\'astronaute répare la fusée', emoji:'👨‍🚀'},{caption:'le robot lave la fusée', emoji:'🤖'}]},
-    {text:'La planète tourne autour du soleil.', caption:'la planète tourne', emoji:'🪐',
-      decoys:[{caption:'la lune tourne autour du soleil', emoji:'🌙'},{caption:'la planète tourne autour de la lune', emoji:'🪐'}]},
-    {text:'L\'alien découvre une étoile.', caption:'l\'alien découvre une étoile', emoji:'👽',
-      decoys:[{caption:'l\'astronaute découvre une étoile', emoji:'👨‍🚀'},{caption:'l\'alien découvre une planète', emoji:'👽'}]},
-    {text:'La comète traverse le ciel.', caption:'la comète traverse le ciel', emoji:'☄️',
-      decoys:[{caption:'la fusée traverse le ciel', emoji:'🚀'},{caption:'la comète traverse l\'espace', emoji:'☄️'}]},
-    {text:'Le satellite observe la Terre.', caption:'le satellite observe la Terre', emoji:'🛰️',
-      decoys:[{caption:'le robot observe la Terre', emoji:'🤖'},{caption:'le satellite observe la lune', emoji:'🛰️'}]}
+    {text:'La fusée décolle.', caption:'la fusée décolle', icons:['🚀','⬆️'],
+      decoys:[{caption:'l\'avion décolle', icons:['✈️','⬆️']},{caption:'la fusée atterrit', icons:['🚀','⬇️']}]},
+    {text:'L\'astronaute flotte dans l\'espace.', caption:'l\'astronaute flotte', icons:['👨‍🚀','🫧'],
+      decoys:[{caption:'le robot flotte', icons:['🤖','🫧']},{caption:'l\'astronaute marche sur la lune', icons:['👨‍🚀','🚶']}]},
+    {text:'La lune brille la nuit.', caption:'la lune brille la nuit', icons:['🌙','✨'],
+      decoys:[{caption:'le soleil brille la nuit', icons:['☀️','✨']},{caption:'la lune brille le jour', icons:['🌙','☀️']}]},
+    {text:'Le robot répare la fusée.', caption:'le robot répare la fusée', icons:['🤖','🔧'],
+      decoys:[{caption:'l\'astronaute répare la fusée', icons:['👨‍🚀','🔧']},{caption:'le robot lave la fusée', icons:['🤖','🧼']}]},
+    {text:'La planète tourne autour du soleil.', caption:'la planète tourne', icons:['🪐','☀️'],
+      decoys:[{caption:'la lune tourne autour du soleil', icons:['🌙','☀️']},{caption:'la planète tourne autour de la lune', icons:['🪐','🌙']}]},
+    {text:'L\'alien découvre une étoile.', caption:'l\'alien découvre une étoile', icons:['👽','⭐'],
+      decoys:[{caption:'l\'astronaute découvre une étoile', icons:['👨‍🚀','⭐']},{caption:'l\'alien découvre une planète', icons:['👽','🪐']}]},
+    {text:'La comète traverse le ciel.', caption:'la comète traverse le ciel', icons:['☄️','🌤️'],
+      decoys:[{caption:'la fusée traverse le ciel', icons:['🚀','🌤️']},{caption:'la comète traverse l\'espace', icons:['☄️','🌌']}]},
+    {text:'Le satellite observe la Terre.', caption:'le satellite observe la Terre', icons:['🛰️','🌍'],
+      decoys:[{caption:'le robot observe la Terre', icons:['🤖','🌍']},{caption:'le satellite observe la lune', icons:['🛰️','🌙']}]}
   ];
 
   var SCENE_BANK_SPACE = [
@@ -1051,22 +1059,22 @@
   ];
 
   var SENTENCE_BANK_DINO = [
-    {text:'Le dinosaure mange des feuilles.', caption:'le dinosaure mange des feuilles', emoji:'🦕',
-      decoys:[{caption:'le lézard mange des feuilles', emoji:'🦎'},{caption:'le dinosaure mange un poisson', emoji:'🦕'}]},
-    {text:'Le volcan crache du feu.', caption:'le volcan crache du feu', emoji:'🌋',
-      decoys:[{caption:'le dragon crache du feu', emoji:'🐉'},{caption:'le volcan crache de la fumée', emoji:'🌋'}]},
-    {text:'L\'explorateur trouve un fossile.', caption:'l\'explorateur trouve un fossile', emoji:'🦴',
-      decoys:[{caption:'le robot trouve un fossile', emoji:'🤖'},{caption:'l\'explorateur trouve un œuf', emoji:'🥚'}]},
-    {text:'Le tyrannosaure court dans la jungle.', caption:'le tyrannosaure court', emoji:'🦖',
-      decoys:[{caption:'le lézard court dans la jungle', emoji:'🦎'},{caption:'le tyrannosaure court dans la caverne', emoji:'🦖'}]},
-    {text:'L\'œuf éclot près de la rivière.', caption:'l\'œuf éclot près de la rivière', emoji:'🥚',
-      decoys:[{caption:'le poisson éclot près de la rivière', emoji:'🐟'},{caption:'l\'œuf tombe près de la rivière', emoji:'🥚'}]},
-    {text:'Le ptérodactyle vole au-dessus du volcan.', caption:'le ptérodactyle vole', emoji:'🦅',
-      decoys:[{caption:'la fée vole au-dessus du volcan', emoji:'🧚'},{caption:'le ptérodactyle vole au-dessus de la jungle', emoji:'🦅'}]},
-    {text:'Les enfants découvrent un squelette.', caption:'les enfants découvrent un squelette', emoji:'💀',
-      decoys:[{caption:'le robot découvre un squelette', emoji:'🤖'},{caption:'les enfants découvrent un volcan', emoji:'🌋'}]},
-    {text:'Le petit dinosaure dort dans son nid.', caption:'le petit dinosaure dort dans son nid', emoji:'🦕',
-      decoys:[{caption:'le petit dinosaure dort dans une caverne', emoji:'🦕'},{caption:'le grand dinosaure dort dans son nid', emoji:'🦕'}]}
+    {text:'Le dinosaure mange des feuilles.', caption:'le dinosaure mange des feuilles', icons:['🦕','🌿'],
+      decoys:[{caption:'le lézard mange des feuilles', icons:['🦎','🌿']},{caption:'le dinosaure mange un poisson', icons:['🦕','🐟']}]},
+    {text:'Le volcan crache du feu.', caption:'le volcan crache du feu', icons:['🌋','🔥'],
+      decoys:[{caption:'le dragon crache du feu', icons:['🐉','🔥']},{caption:'le volcan crache de la fumée', icons:['🌋','💨']}]},
+    {text:'L\'explorateur trouve un fossile.', caption:'l\'explorateur trouve un fossile', icons:['🧭','🦴'],
+      decoys:[{caption:'le robot trouve un fossile', icons:['🤖','🦴']},{caption:'l\'explorateur trouve un œuf', icons:['🧭','🥚']}]},
+    {text:'Le tyrannosaure court dans la jungle.', caption:'le tyrannosaure court', icons:['🦖','🌴'],
+      decoys:[{caption:'le lézard court dans la jungle', icons:['🦎','🌴']},{caption:'le tyrannosaure court dans la caverne', icons:['🦖','🕳️']}]},
+    {text:'L\'œuf éclot près de la rivière.', caption:'l\'œuf éclot près de la rivière', icons:['🥚','🌊'],
+      decoys:[{caption:'le poisson éclot près de la rivière', icons:['🐟','🌊']},{caption:'l\'œuf tombe près de la rivière', icons:['🥚','⬇️']}]},
+    {text:'Le ptérodactyle vole au-dessus du volcan.', caption:'le ptérodactyle vole', icons:['🦅','🌋'],
+      decoys:[{caption:'la fée vole au-dessus du volcan', icons:['🧚','🌋']},{caption:'le ptérodactyle vole au-dessus de la jungle', icons:['🦅','🌴']}]},
+    {text:'Les enfants découvrent un squelette.', caption:'les enfants découvrent un squelette', icons:['🧒','💀'],
+      decoys:[{caption:'le robot découvre un squelette', icons:['🤖','💀']},{caption:'les enfants découvrent un volcan', icons:['🧒','🌋']}]},
+    {text:'Le petit dinosaure dort dans son nid.', caption:'le petit dinosaure dort dans son nid', icons:['🔽','🪺'],
+      decoys:[{caption:'le petit dinosaure dort dans une caverne', icons:['🔽','🕳️']},{caption:'le grand dinosaure dort dans son nid', icons:['🔼','🪺']}]}
   ];
 
   var SCENE_BANK_DINO = [
@@ -1286,10 +1294,10 @@
   function buildSentenceRound(){
     var chosen = pickN(THEMES[state.pack].sentenceBank, 6);
     return chosen.map(function(item){
-      var opts = shuffle([{caption:item.caption, emoji:item.emoji}].concat(item.decoys)).map(function(o){
-        return {key:o.caption, label:o.emoji, wordLabel:o.caption, correct: o.caption === item.caption, kind:'emoji'};
+      var opts = shuffle([{caption:item.caption, icons:item.icons}].concat(item.decoys)).map(function(o){
+        return {key:o.caption, icons:o.icons, correct: o.caption === item.caption, kind:'twopic'};
       });
-      return {type:'sentence', text:item.text, words:item.text.split(' '), emoji:item.emoji, options:opts};
+      return {type:'sentence', text:item.text, words:item.text.split(' '), icons:item.icons, options:opts};
     });
   }
 
@@ -1515,7 +1523,7 @@
       listenSentence.textContent = '📜 Lire toute la phrase';
       listenSentence.addEventListener('click', function(){ speak(q.text); });
       stage.appendChild(listenSentence);
-      renderOptions(q.options, 'emoji', 'opt-3');
+      renderOptions(q.options, 'twopic', 'opt-3');
     }
 
     else if (q.type === 'scene'){
@@ -1566,6 +1574,10 @@
         });
         btn.innerHTML = html;
         btn.setAttribute('aria-label', 'Scène ' + (opt.key || ''));
+      } else if (kind === 'twopic'){
+        var iconsHtml = opt.icons.map(function(ic){ return '<span>' + ic + '</span>'; }).join('');
+        btn.innerHTML = '<span class="twopic-icons" aria-hidden="true">' + iconsHtml + '</span>';
+        btn.setAttribute('aria-label', opt.key || 'Réponse');
       }
       btn.addEventListener('click', function(){ handleAnswer(btn, opt); });
       if (withAudio){
