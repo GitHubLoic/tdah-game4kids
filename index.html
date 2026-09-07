@@ -262,6 +262,23 @@
   }
   .theme-btn.active{background:var(--accent-tint); border-color:var(--accent); color:var(--accent-deep);}
 
+  .companion-card{
+    background:var(--surface); border:2px solid var(--border); border-radius:26px;
+    box-shadow:var(--shadow); padding:1.2rem 1.4rem; margin-top:1.1rem;
+    display:flex; align-items:center; gap:1.2rem; text-align:left;
+  }
+  .companion-avatar{
+    flex:none; width:5.2rem; height:5.2rem; border-radius:50%;
+    background:var(--accent-tint); border:3px solid var(--accent);
+    display:flex; align-items:center; justify-content:center;
+    font-size:2.6rem;
+  }
+  .companion-info{flex:1; min-width:0;}
+  .companion-title{font-family:var(--font-display); font-weight:700; font-size:1.25rem; color:var(--accent-deep); margin-bottom:0.5rem;}
+  .companion-progress-track{background:var(--accent-tint); border-radius:999px; height:0.7rem; overflow:hidden;}
+  .companion-progress-fill{background:var(--accent); height:100%; border-radius:999px; transition:width 0.4s ease; width:0%;}
+  .companion-next{font-size:0.92rem; color:var(--ink-soft); margin-top:0.5rem;}
+
   .home-grid{
     display:grid; grid-template-columns:repeat(auto-fit, minmax(15.5rem, 1fr)); gap:1.1rem; margin-top:0.4rem;
   }
@@ -505,6 +522,9 @@
     .crystal-counter{padding:0.4rem 0.7rem; font-size:1.1rem;}
     .quit-btn{padding:0.5rem 0.75rem; font-size:1rem;}
     .fullscreen-btn{width:2.4rem; height:2.4rem; font-size:1.15rem;}
+    .companion-card{padding:0.9rem 1rem; gap:0.8rem;}
+    .companion-avatar{width:3.8rem; height:3.8rem; font-size:1.9rem;}
+    .companion-title{font-size:1.05rem;}
   }
 </style>
 
@@ -533,6 +553,17 @@
     <div class="theme-switcher">
       <div class="theme-switcher-label">Choisis ton univers</div>
       <div class="theme-switcher-row" id="theme-switcher-row"></div>
+    </div>
+
+    <div class="companion-card" id="companion-card">
+      <div class="companion-avatar" id="companion-avatar" aria-hidden="true">🧙</div>
+      <div class="companion-info">
+        <div class="companion-title" id="companion-title">Mage en Herbe</div>
+        <div class="companion-progress-track" role="progressbar" id="companion-progress-track" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="companion-progress-fill" id="companion-progress-fill"></div>
+        </div>
+        <div class="companion-next" id="companion-next">Encore des cristaux pour évoluer !</div>
+      </div>
     </div>
 
     <div class="home-grid" id="home-grid"></div>
@@ -726,6 +757,35 @@
     $('crystal-count').textContent = state.crystals;
     var lvl = levelFor(state.crystals);
     $('level-pill').textContent = lvl.emoji + ' ' + lvl.title;
+    refreshCompanion();
+  }
+  function refreshCompanion(){
+    var levels = THEMES[state.pack].levels;
+    var n = state.crystals;
+    var idx = 0;
+    for (var i = levels.length - 1; i >= 0; i--){
+      if (n >= levels[i].min){ idx = i; break; }
+    }
+    var cur = levels[idx];
+    var next = levels[idx + 1];
+    $('companion-avatar').textContent = cur.emoji;
+    $('companion-title').textContent = cur.title;
+    var track = $('companion-progress-track');
+    var fill = $('companion-progress-fill');
+    var label = $('companion-next');
+    if (next){
+      var span = next.min - cur.min;
+      var into = n - cur.min;
+      var pct = Math.max(4, Math.min(100, Math.round((into / span) * 100)));
+      fill.style.width = pct + '%';
+      track.setAttribute('aria-valuenow', String(pct));
+      var remain = next.min - n;
+      label.textContent = 'Encore ' + remain + ' ' + THEMES[state.pack].currencyIcon + ' pour évoluer en ' + next.emoji + ' ' + next.title + ' !';
+    } else {
+      fill.style.width = '100%';
+      track.setAttribute('aria-valuenow', '100');
+      label.textContent = 'Niveau maximum atteint, quelle aventure ! ' + THEMES[state.pack].currencyIcon;
+    }
   }
   function applyPack(){
     var theme = THEMES[state.pack];
@@ -1155,11 +1215,14 @@
       heroTitle:'Bienvenue au Royaume des Lettres ✨',
       heroSub:'Choisis un portail magique pour t\'entraîner à lire. Chaque bonne réponse te rapporte des cristaux !',
       levels:[
-        {min:0, title:'Mage en Herbe', emoji:'🧙'},
-        {min:10, title:'Elfe des Lettres', emoji:'🧝'},
-        {min:25, title:'Sage des Syllabes', emoji:'🔮'},
-        {min:50, title:'Garde du Royaume', emoji:'🛡️'},
-        {min:100, title:'Licorne Royale', emoji:'🦄'}
+        {min:0, title:'Étincelle Magique', emoji:'✨'},
+        {min:6, title:'Mage en Herbe', emoji:'🧙'},
+        {min:15, title:'Elfe des Lettres', emoji:'🧝'},
+        {min:28, title:'Sage des Syllabes', emoji:'🔮'},
+        {min:45, title:'Sentinelle des Mots', emoji:'⚔️'},
+        {min:65, title:'Garde du Royaume', emoji:'🛡️'},
+        {min:90, title:'Éclat Royal', emoji:'💠'},
+        {min:120, title:'Licorne Royale', emoji:'🦄'}
       ],
       portals:{
         alphabet:{name:'L\'Alphabet Magique', icon:'🔤', desc:'Découvre chaque lettre et associe-la à son image, dans les deux sens !'},
@@ -1183,11 +1246,14 @@
       heroTitle:'Bienvenue dans la Galaxie des Lettres 🌌',
       heroSub:'Choisis une mission pour t\'entraîner à lire. Chaque bonne réponse te rapporte une étoile !',
       levels:[
-        {min:0, title:'Recrue de l\'Espace', emoji:'🧑‍🚀'},
-        {min:10, title:'Pilote en Formation', emoji:'🕹️'},
-        {min:25, title:'Guide Stellaire', emoji:'🌟'},
-        {min:50, title:'Capitaine de Bord', emoji:'🧑‍✈️'},
-        {min:100, title:'Astronaute Légendaire', emoji:'🚀'}
+        {min:0, title:'Étoile Naissante', emoji:'🌠'},
+        {min:6, title:'Recrue de l\'Espace', emoji:'🧑‍🚀'},
+        {min:15, title:'Pilote en Formation', emoji:'🕹️'},
+        {min:28, title:'Guide Stellaire', emoji:'🧭'},
+        {min:45, title:'Garde du Vaisseau', emoji:'🛰️'},
+        {min:65, title:'Capitaine de Bord', emoji:'🧑‍✈️'},
+        {min:90, title:'As Galactique', emoji:'🪐'},
+        {min:120, title:'Astronaute Légendaire', emoji:'🚀'}
       ],
       portals:{
         alphabet:{name:'L\'Alphabet Spatial', icon:'🔤', desc:'Découvre chaque lettre et associe-la à son image, dans les deux sens !'},
@@ -1211,11 +1277,14 @@
       heroTitle:'Bienvenue dans la Vallée des Lettres 🌋',
       heroSub:'Choisis une exploration pour t\'entraîner à lire. Chaque bonne réponse te rapporte un œuf !',
       levels:[
-        {min:0, title:'Paléontologue en Herbe', emoji:'🔍'},
-        {min:10, title:'As des Fossiles', emoji:'🦴'},
-        {min:25, title:'Guide du Jurassique', emoji:'🌴'},
-        {min:50, title:'Garde des Dinosaures', emoji:'🦕'},
-        {min:100, title:'Légende du Crétacé', emoji:'🦖'}
+        {min:0, title:'ŒUf Mystérieux', emoji:'🥚'},
+        {min:6, title:'Bébé Dino', emoji:'🐣'},
+        {min:15, title:'Sur la Piste', emoji:'🔍'},
+        {min:28, title:'As des Fossiles', emoji:'🦴'},
+        {min:45, title:'Dino Cuirassé', emoji:'🛡️'},
+        {min:65, title:'Guide du Jurassique', emoji:'🌴'},
+        {min:90, title:'Garde Préhistorique', emoji:'🦕'},
+        {min:120, title:'Légende du Crétacé', emoji:'🦖'}
       ],
       portals:{
         alphabet:{name:'L\'Alphabet du Jurassique', icon:'🔤', desc:'Découvre chaque lettre et associe-la à son image, dans les deux sens !'},
