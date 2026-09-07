@@ -286,6 +286,13 @@
     align-self:flex-start; font-family:var(--font-display); font-weight:700; font-size:1.05rem; color:var(--card-accent, var(--accent-deep));
     display:flex; align-items:center; gap:0.3rem; position:relative; z-index:1;
   }
+  .difficulty-badge{
+    display:flex; align-items:center; gap:0.45rem; position:relative; z-index:1;
+  }
+  .difficulty-pips{display:flex; gap:0.15rem; font-size:1.05rem; line-height:1;}
+  .difficulty-pips .pip{opacity:1; filter:none;}
+  .difficulty-pips .pip.pip-empty{opacity:0.28; filter:grayscale(1);}
+  .difficulty-label{font-size:0.85rem; font-weight:600; color:var(--ink-soft);}
 
   .parent-note{
     margin-top:1.8rem; background:var(--surface); border:2px dashed var(--border); border-radius:20px; padding:0.9rem 1.1rem;
@@ -1143,7 +1150,7 @@
   /* ---------------- Theme packs ---------------- */
   var THEMES = {
     magic: {
-      label:'Magie', selectorIcon:'🦄', mascot:'🦄',
+      label:'Magie', selectorIcon:'🦄', mascot:'🦄', difficultyIcon:'🔮',
       appName:'Les Cristaux de Licorne', currencyIcon:'💎', homeTagline:'Aventure de lecture magique',
       heroTitle:'Bienvenue au Royaume des Lettres ✨',
       heroSub:'Choisis un portail magique pour t\'entraîner à lire. Chaque bonne réponse te rapporte des cristaux !',
@@ -1171,7 +1178,7 @@
       wordBank:WORD_BANK_MAGIC, huntBank:HUNT_BANK_MAGIC, sentenceBank:SENTENCE_BANK_MAGIC, sceneBank:SCENE_BANK_MAGIC, alphabetBank:ALPHABET_BANK_MAGIC
     },
     space: {
-      label:'Espace', selectorIcon:'🚀', mascot:'🚀',
+      label:'Espace', selectorIcon:'🚀', mascot:'🚀', difficultyIcon:'⭐',
       appName:'Les Cristaux Cosmiques', currencyIcon:'🌟', homeTagline:'Mission de lecture spatiale',
       heroTitle:'Bienvenue dans la Galaxie des Lettres 🌌',
       heroSub:'Choisis une mission pour t\'entraîner à lire. Chaque bonne réponse te rapporte une étoile !',
@@ -1199,7 +1206,7 @@
       wordBank:WORD_BANK_SPACE, huntBank:HUNT_BANK_SPACE, sentenceBank:SENTENCE_BANK_SPACE, sceneBank:SCENE_BANK_SPACE, alphabetBank:ALPHABET_BANK_SPACE
     },
     dino: {
-      label:'Dinosaures', selectorIcon:'🦖', mascot:'🦖',
+      label:'Dinosaures', selectorIcon:'🦖', mascot:'🦖', difficultyIcon:'🦴',
       appName:'Les Œufs de Dino', currencyIcon:'🥚', homeTagline:'Expédition de lecture préhistorique',
       heroTitle:'Bienvenue dans la Vallée des Lettres 🌋',
       heroSub:'Choisis une exploration pour t\'entraîner à lire. Chaque bonne réponse te rapporte un œuf !',
@@ -1329,14 +1336,16 @@
   }
 
   var GAMES = [
-    { id:'alphabet', accentVar:'--gold', tintVar:'--gold-tint', build: buildAlphabetRound },
-    { id:'mirror', accentVar:'--rose', tintVar:'--rose-tint', build: buildMirrorRound },
-    { id:'blend', accentVar:'--gold-deep', tintVar:'--gold-tint', build: buildBlendRound },
-    { id:'path', accentVar:'--accent', tintVar:'--accent-tint', build: buildPathRound },
-    { id:'hunt', accentVar:'--success', tintVar:'--success-bg', build: buildHuntRound },
-    { id:'sentence', accentVar:'--sky', tintVar:'--sky-tint', build: buildSentenceRound },
-    { id:'scene', accentVar:'--amber', tintVar:'--amber-tint', build: buildSceneRound }
+    { id:'alphabet', accentVar:'--gold', tintVar:'--gold-tint', build: buildAlphabetRound, difficulty:1 },
+    { id:'mirror', accentVar:'--rose', tintVar:'--rose-tint', build: buildMirrorRound, difficulty:2 },
+    { id:'blend', accentVar:'--gold-deep', tintVar:'--gold-tint', build: buildBlendRound, difficulty:2 },
+    { id:'path', accentVar:'--accent', tintVar:'--accent-tint', build: buildPathRound, difficulty:2 },
+    { id:'hunt', accentVar:'--success', tintVar:'--success-bg', build: buildHuntRound, difficulty:2 },
+    { id:'sentence', accentVar:'--sky', tintVar:'--sky-tint', build: buildSentenceRound, difficulty:3 },
+    { id:'scene', accentVar:'--amber', tintVar:'--amber-tint', build: buildSceneRound, difficulty:3 }
   ];
+
+  var DIFFICULTY_LABELS = { 1:'Facile', 2:'Moyen', 3:'Difficile' };
 
   /* ---------------- Home rendering ---------------- */
   function renderHome(){
@@ -1350,9 +1359,18 @@
       card.className = 'portal-card';
       card.style.setProperty('--card-accent', 'var(' + g.accentVar + ')');
       card.style.setProperty('--card-tint', 'var(' + g.tintVar + ')');
+      var diffIcon = THEMES[state.pack].difficultyIcon;
+      var diffLabel = DIFFICULTY_LABELS[g.difficulty] || '';
+      var pips = [1,2,3].map(function(n){
+        return '<span class="pip' + (n <= g.difficulty ? '' : ' pip-empty') + '">' + diffIcon + '</span>';
+      }).join('');
       card.innerHTML =
         '<div class="portal-icon" aria-hidden="true">' + meta.icon + '</div>' +
         '<div class="portal-name">' + meta.name + '</div>' +
+        '<div class="difficulty-badge" aria-label="Difficulté : ' + diffLabel + '">' +
+          '<span class="difficulty-pips" aria-hidden="true">' + pips + '</span>' +
+          '<span class="difficulty-label">' + diffLabel + '</span>' +
+        '</div>' +
         '<div class="portal-desc">' + meta.desc + '</div>' +
         '<div class="portal-cta">Entrer dans le portail →</div>';
       card.addEventListener('click', function(){ startGame(g.id); });
