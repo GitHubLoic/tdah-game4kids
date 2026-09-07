@@ -1242,7 +1242,8 @@
         {min:120, title:'Licorne Royale', emoji:'🦄'}
       ],
       portals:{
-        alphabet:{name:'L\'Alphabet Magique', icon:'🔤', desc:'Découvre chaque lettre et associe-la à son image, dans les deux sens !'},
+        alphabetSound:{name:'L\'Alphabet Magique', icon:'🔤', desc:'Écoute le son de la lettre, puis touche l\'image qui commence pareil !'},
+        alphabetLetter:{name:'Les Lettres Enchantées', icon:'📖', desc:'Regarde l\'image, écoute le mot, puis touche la lettre par laquelle il commence !'},
         mirror:{name:'Le Miroir Magique', icon:'🪞', desc:'Démasque les lettres jumelles b, d, p, q sans te faire piéger par leur reflet.'},
         blend:{name:'La Fusion Magique', icon:'🪄', desc:'Écoute deux lettres, fusionne-les avec la baguette et trouve la syllabe.'},
         path:{name:'Le Chemin des Syllabes', icon:'👣', desc:'Avance syllabe par syllabe pour lire un mot et trouver son image.'},
@@ -1273,7 +1274,8 @@
         {min:120, title:'Astronaute Légendaire', emoji:'🚀'}
       ],
       portals:{
-        alphabet:{name:'L\'Alphabet Spatial', icon:'🔤', desc:'Découvre chaque lettre et associe-la à son image, dans les deux sens !'},
+        alphabetSound:{name:'L\'Alphabet Spatial', icon:'🔤', desc:'Écoute le son de la lettre, puis touche l\'image qui commence pareil !'},
+        alphabetLetter:{name:'Les Lettres Stellaires', icon:'📖', desc:'Regarde l\'image, écoute le mot, puis touche la lettre par laquelle il commence !'},
         mirror:{name:'Le Miroir Spatial', icon:'🪞', desc:'Démasque les lettres jumelles b, d, p, q sans te faire piéger par leur reflet.'},
         blend:{name:'La Fusion Stellaire', icon:'🛸', desc:'Écoute deux lettres, fusionne-les avec le vaisseau et trouve la syllabe.'},
         path:{name:'Le Chemin des Étoiles', icon:'👣', desc:'Avance syllabe par syllabe pour lire un mot et trouver son image.'},
@@ -1304,7 +1306,8 @@
         {min:120, title:'Légende du Crétacé', emoji:'🦖'}
       ],
       portals:{
-        alphabet:{name:'L\'Alphabet du Jurassique', icon:'🔤', desc:'Découvre chaque lettre et associe-la à son image, dans les deux sens !'},
+        alphabetSound:{name:'L\'Alphabet du Jurassique', icon:'🔤', desc:'Écoute le son de la lettre, puis touche l\'image qui commence pareil !'},
+        alphabetLetter:{name:'Les Lettres Fossiles', icon:'📖', desc:'Regarde l\'image, écoute le mot, puis touche la lettre par laquelle il commence !'},
         mirror:{name:'Le Miroir du Jurassique', icon:'🪞', desc:'Démasque les lettres jumelles b, d, p, q sans te faire piéger par leur reflet.'},
         blend:{name:'La Fusion Préhistorique', icon:'🦴', desc:'Écoute deux lettres, fusionne-les avec la griffe et trouve la syllabe.'},
         path:{name:'Le Chemin des Fossiles', icon:'👣', desc:'Avance syllabe par syllabe pour lire un mot et trouver son image.'},
@@ -1322,24 +1325,36 @@
   };
 
   /* ---------------- Round builders ---------------- */
-  function buildAlphabetRound(){
-    var bank = THEMES[state.pack].alphabetBank;
+  // X, W et Z ont un son qui varie trop selon le mot (ex: "wagon" se prononce
+  // avec un son proche du V en français) pour être devinés fiablement à partir
+  // du seul son de la lettre : on les retire du jeu son -> image ci-dessous.
+  var ALPHABET_SOUND_EXCLUDE = ['X', 'W', 'Z'];
+
+  function buildAlphabetSoundRound(){
+    var bank = THEMES[state.pack].alphabetBank.filter(function(x){
+      return ALPHABET_SOUND_EXCLUDE.indexOf(x.letter) === -1;
+    });
     var chosen = pickN(bank, 6);
-    return chosen.map(function(item, i){
-      var mode = (i % 2 === 0) ? 'toImage' : 'toLetter';
+    return chosen.map(function(item){
       var others = bank.filter(function(x){ return x.letter !== item.letter; });
       var decoys = pickN(others, 2);
-      if (mode === 'toImage'){
-        var opts = shuffle([item].concat(decoys)).map(function(w){
-          return {key:w.letter, label:w.emoji, wordLabel:w.word, correct: w.letter === item.letter, kind:'emoji'};
-        });
-        return {type:'alphabet', mode:mode, letter:item.letter, word:item.word, emoji:item.emoji, options:opts};
-      } else {
-        var opts2 = shuffle([item].concat(decoys)).map(function(w){
-          return {key:w.letter, label:w.letter, correct: w.letter === item.letter, kind:'letter'};
-        });
-        return {type:'alphabet', mode:mode, letter:item.letter, word:item.word, emoji:item.emoji, options:opts2};
-      }
+      var opts = shuffle([item].concat(decoys)).map(function(w){
+        return {key:w.letter, label:w.emoji, wordLabel:w.word, correct: w.letter === item.letter, kind:'emoji'};
+      });
+      return {type:'alphabet', mode:'toImage', letter:item.letter, word:item.word, emoji:item.emoji, options:opts};
+    });
+  }
+
+  function buildAlphabetLetterRound(){
+    var bank = THEMES[state.pack].alphabetBank;
+    var chosen = pickN(bank, 6);
+    return chosen.map(function(item){
+      var others = bank.filter(function(x){ return x.letter !== item.letter; });
+      var decoys = pickN(others, 2);
+      var opts = shuffle([item].concat(decoys)).map(function(w){
+        return {key:w.letter, label:w.letter, correct: w.letter === item.letter, kind:'letter'};
+      });
+      return {type:'alphabet', mode:'toLetter', letter:item.letter, word:item.word, emoji:item.emoji, options:opts};
     });
   }
 
@@ -1422,7 +1437,8 @@
   }
 
   var GAMES = [
-    { id:'alphabet', accentVar:'--gold', tintVar:'--gold-tint', build: buildAlphabetRound, difficulty:1 },
+    { id:'alphabetSound', accentVar:'--gold', tintVar:'--gold-tint', build: buildAlphabetSoundRound, difficulty:1 },
+    { id:'alphabetLetter', accentVar:'--retry', tintVar:'--retry-bg', build: buildAlphabetLetterRound, difficulty:2 },
     { id:'mirror', accentVar:'--rose', tintVar:'--rose-tint', build: buildMirrorRound, difficulty:2 },
     { id:'blend', accentVar:'--gold-deep', tintVar:'--gold-tint', build: buildBlendRound, difficulty:2 },
     { id:'path', accentVar:'--accent', tintVar:'--accent-tint', build: buildPathRound, difficulty:2 },
