@@ -701,6 +701,9 @@
     var pool = arr.filter(function(x){ return !excludeSet || !excludeSet.has(x); });
     return shuffle(pool).slice(0, n);
   }
+  function stripAccents(s){
+    return String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
 
   /* ---------------- Code couleur des sons complexes ----------------
      Repère les graphies qui font UN seul son (ex. "on", "ou", "ch") pour éviter
@@ -1325,10 +1328,11 @@
   };
 
   /* ---------------- Round builders ---------------- */
-  // X, W et Z ont un son qui varie trop selon le mot (ex: "wagon" se prononce
-  // avec un son proche du V en français) pour être devinés fiablement à partir
-  // du seul son de la lettre : on les retire du jeu son -> image ci-dessous.
-  var ALPHABET_SOUND_EXCLUDE = ['X', 'W', 'Z'];
+  // H, X, W et Z sont retirés du jeu son -> image ci-dessous : H est muet en
+  // français (pas de son propre à faire deviner), et X/W/Z ont un son qui varie
+  // trop selon le mot (ex: "wagon" se prononce avec un son proche du V) pour
+  // être devinés fiablement à partir du seul son isolé de la lettre.
+  var ALPHABET_SOUND_EXCLUDE = ['H', 'X', 'W', 'Z'];
 
   function buildAlphabetSoundRound(){
     var bank = THEMES[state.pack].alphabetBank.filter(function(x){
@@ -1336,8 +1340,15 @@
     });
     var chosen = pickN(bank, 6);
     return chosen.map(function(item){
-      var others = bank.filter(function(x){ return x.letter !== item.letter; });
-      var decoys = pickN(others, 2);
+      var targetLetter = item.letter.toLowerCase();
+      // On évite un mot-piège qui contiendrait aussi le son de la lettre cible
+      // ailleurs dans le mot (ex: cible "A", piège "château" qui contient un "a"
+      // qui s'entend) : ça pourrait faire hésiter l'enfant entre deux images.
+      var safe = bank.filter(function(x){
+        return x.letter !== item.letter && stripAccents(x.word.toLowerCase()).indexOf(targetLetter) === -1;
+      });
+      var pool = safe.length >= 2 ? safe : bank.filter(function(x){ return x.letter !== item.letter; });
+      var decoys = pickN(pool, 2);
       var opts = shuffle([item].concat(decoys)).map(function(w){
         return {key:w.letter, label:w.emoji, wordLabel:w.word, correct: w.letter === item.letter, kind:'emoji'};
       });
