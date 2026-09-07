@@ -669,6 +669,12 @@
       window.speechSynthesis.speak(u);
     }catch(e){}
   }
+  function speakLetter(letter){
+    // Certaines voix françaises annoncent une lettre isolée en majuscule
+    // (ex: "y majuscule") ; on parle toujours la lettre en minuscule pour
+    // n'entendre que le son de la lettre elle-même.
+    speak(String(letter).toLowerCase());
+  }
 
   /* ---------------- Helpers ---------------- */
   function $(id){ return document.getElementById(id); }
@@ -1500,7 +1506,7 @@
         listenLetterBtn.className = 'listen-btn';
         listenLetterBtn.type = 'button';
         listenLetterBtn.textContent = '🔊 Écouter la lettre';
-        listenLetterBtn.addEventListener('click', function(){ speak(q.letter); });
+        listenLetterBtn.addEventListener('click', function(){ speakLetter(q.letter); });
         stage.appendChild(listenLetterBtn);
         renderOptions(q.options, 'emoji', 'opt-3', false, true);
       } else {
@@ -1711,7 +1717,7 @@
       if (q.type === 'path' || q.type === 'hunt'){ speak(q.word); }
       else if (q.type === 'sentence'){ speak(q.text); }
       else if (q.type === 'scene'){ speak('Bravo, c\'est la bonne scène !'); }
-      else if (q.type === 'alphabet'){ speak(q.mode === 'toImage' ? q.word : q.letter); }
+      else if (q.type === 'alphabet'){ if (q.mode === 'toImage'){ speak(q.word); } else { speakLetter(q.letter); } }
       setTimeout(advance, q.type === 'scene' ? 2000 : (q.type === 'sentence' ? 1500 : 1100));
     } else {
       state.attempts += 1;
