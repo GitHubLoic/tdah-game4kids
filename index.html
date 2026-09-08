@@ -674,19 +674,29 @@
   // qu'elle fait au début d'un mot plutôt qu'à réciter l'alphabet. Les voyelles
   // (a, e, i, o, u) ne sont pas listées : leur nom se prononce déjà comme leur son.
   var LETTER_SOUNDS = {
+    // Regle generale : on veut le SON de la lettre, jamais sa "lecture"
+    // (son nom d'alphabet, ou une voix qui epelle un caractere isole).
+    // On evite donc de passer un caractere seul a la synthese vocale : c'est
+    // ce qui declenchait par exemple "i grec" pour Y ou "e accent aigu" pour E.
+    //
     // Consonnes occlusives (b, c/k/q, d, g, p, t) : impossibles a tenir seules,
     // on garde donc un tout petit son d'appui ("e" muet) apres la consonne.
-    // Consonnes continues (f, j, l, m, n, r, s, v, z) : on peut les tenir
-    // sans aucune voyelle ("mmm", "sss"...), donc pas de "e" ajoute derriere,
-    // sinon l'enfant entend "meu"/"neu" au lieu du vrai son pur de la lettre.
-    'B':'beu', 'C':'keu', 'D':'deu', 'E':'et', 'F':'fff', 'G':'gueu', 'J':'jjj',
-    'K':'keu', 'L':'lll', 'M':'mmm', 'N':'nnn', 'P':'peu', 'Q':'keu',
-    'R':'rrr', 'S':'sss', 'T':'teu', 'V':'vvv', 'Y':'yeu', 'Z':'zzz'
+    // Consonnes continues (f, j, l, m, n, r, s, v, z) et semi-voyelle (y) :
+    // on peut les tenir sans rien ajouter ("mmm", "sss", "yyyy"...), donc pas
+    // de "e" derriere, sinon l'enfant entend "meu"/"yeu" au lieu du son pur.
+    // Voyelles (a, e, i, o, u) : la lettre seule ("e", "y"...) est parfois lue
+    // comme un nom de caractere par la synthese vocale ; on la repete donc
+    // (aaaa, iiii...) sauf le E, qui a besoin du mot "et" pour garder le bon
+    // son ferme (une lettre "e" seule tombe sur le son "eu" muet).
+    'A':'aaaa', 'B':'beu', 'C':'keu', 'D':'deu', 'E':'et', 'F':'fff', 'G':'gueu',
+    'I':'iiii', 'J':'jjj', 'K':'keu', 'L':'lll', 'M':'mmm', 'N':'nnn', 'O':'oooo',
+    'P':'peu', 'Q':'keu', 'R':'rrr', 'S':'sss', 'T':'teu', 'U':'uuuu', 'V':'vvv',
+    'Y':'yyyy', 'Z':'zzz'
   };
   function speakLetter(letter){
-    // Certaines voix françaises annoncent aussi une lettre isolée en majuscule
-    // (ex: "y majuscule" pour "Y") ; le repli en minuscule évite ce défaut pour
-    // les lettres sans son dédié ci-dessus (voyelles, h, w, x, y).
+    // H, W et X n'ont pas de son unique et fiable en français (H est muet,
+    // W et X changent de son selon le mot) : ils ne sont pas dans la table
+    // ci-dessus et restent volontairement exclus du jeu son -> image.
     var upper = String(letter).toUpperCase();
     var sound = LETTER_SOUNDS[upper] || upper.toLowerCase();
     speak(sound);
