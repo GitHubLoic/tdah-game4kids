@@ -674,29 +674,20 @@
   // qu'elle fait au début d'un mot plutôt qu'à réciter l'alphabet. Les voyelles
   // (a, e, i, o, u) ne sont pas listées : leur nom se prononce déjà comme leur son.
   var LETTER_SOUNDS = {
-    // Regle generale : on veut le SON de la lettre, jamais sa "lecture"
-    // (son nom d'alphabet, ou une voix qui epelle un caractere isole).
-    // On evite donc de passer un caractere seul a la synthese vocale : c'est
-    // ce qui declenchait par exemple "i grec" pour Y ou "e accent aigu" pour E.
-    //
-    // Consonnes occlusives (b, c/k/q, d, g, p, t) : impossibles a tenir seules,
-    // on garde donc un tout petit son d'appui ("e" muet) apres la consonne.
-    // Consonnes continues (f, j, l, m, n, r, s, v, z) et semi-voyelle (y) :
-    // on peut les tenir sans rien ajouter ("mmm", "sss", "yyyy"...), donc pas
-    // de "e" derriere, sinon l'enfant entend "meu"/"yeu" au lieu du son pur.
-    // Voyelles (a, e, i, o, u) : la lettre seule ("e", "y"...) est parfois lue
-    // comme un nom de caractere par la synthese vocale ; on la repete donc
-    // (aaaa, iiii...) sauf le E, qui a besoin du mot "et" pour garder le bon
-    // son ferme (une lettre "e" seule tombe sur le son "eu" muet).
-    'A':'aaaa', 'B':'beu', 'C':'keu', 'D':'deu', 'E':'et', 'F':'fff', 'G':'gueu',
-    'I':'iiii', 'J':'jjj', 'K':'keu', 'L':'lll', 'M':'mmm', 'N':'nnn', 'O':'oooo',
-    'P':'peu', 'Q':'keu', 'R':'rrr', 'S':'sss', 'T':'teu', 'U':'uuuu', 'V':'vvv',
-    'Y':'yyyy', 'Z':'zzz'
+    // La synthese vocale du navigateur ne sait pas "tenir" un son : un
+    // caractere repete (ex: "mmm", "aaaa") est souvent epele lettre par
+    // lettre ("m, m, m") au lieu d'etre lu comme un son continu. On utilise
+    // donc un vrai mot/pseudo-mot d'un seul bloc pour chaque lettre, ce qui
+    // reste le plus fiable avec ce moteur de synthese (voir aussi "et" pour
+    // le E, qui evite le meme probleme que l'accent seul "é").
+    'B':'beu', 'C':'keu', 'D':'deu', 'E':'et', 'F':'feu', 'G':'gueu', 'J':'jeu',
+    'K':'keu', 'L':'leu', 'M':'meu', 'N':'neu', 'P':'peu', 'Q':'keu',
+    'R':'reu', 'S':'seu', 'T':'teu', 'V':'veu', 'Y':'yeu', 'Z':'zeu'
   };
   function speakLetter(letter){
-    // H, W et X n'ont pas de son unique et fiable en français (H est muet,
-    // W et X changent de son selon le mot) : ils ne sont pas dans la table
-    // ci-dessus et restent volontairement exclus du jeu son -> image.
+    // Certaines voix françaises annoncent aussi une lettre isolée en majuscule
+    // (ex: "y majuscule" pour "Y") ; le repli en minuscule évite ce défaut pour
+    // les lettres sans son dédié ci-dessus (voyelles a/i/o/u, h, w, x).
     var upper = String(letter).toUpperCase();
     var sound = LETTER_SOUNDS[upper] || upper.toLowerCase();
     speak(sound);
